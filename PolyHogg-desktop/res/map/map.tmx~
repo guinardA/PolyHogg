@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="5z1KX" tilewidth="32" tileheight="32">
+  <image source="../Downloads/res/maps/5z1KX.png" width="736" height="672"/>
+ </tileset>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7yMDAoE9jfBGI7RloDzYwMjBo08keLTrYsx5oj92oPWTZY0sHe9aN2kO2PUF0sCeEAZJPycEwoEMk1iYTw4AukRgA6dkX8Q==
+  </data>
+ </layer>
+ <layer name="plateforme" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYKAf4CECFyJhYtQjY2z2WDLitkeREbc9ioyobGQ+qfZQ6h9uGmN89vymwFyY3jQi7KGFf7hojEftoY49v5DYSkD8F4gDcMgj442MEDkQDRP7i8UecsAhRgimNYiFYmIBAFt6GeQ=
+  </data>
+ </layer>
+</map>
