@@ -1,9 +1,11 @@
 package com.PolyHogg.view;
 
-import com.PolyHogg.controller.PersoController;
-import com.PolyHogg.model.ChargementNiveau;
-import com.PolyHogg.model.ChargementPersonnage;
-import com.PolyHogg.utils.VariableGeneral;
+import com.PolyHogg.controller.GameContactListener;
+import com.PolyHogg.controller.PersonnageListener;
+import com.PolyHogg.manager.ChargementPersonnage;
+import com.PolyHogg.manager.LevelManager;
+import com.PolyHogg.temporaire.AfficheSprite;
+import com.PolyHogg.utils.Constants;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
@@ -27,7 +29,8 @@ public class GameScreen implements Screen{
 		private Body player;//Personnage du monde
 		private OrthographicCamera camera;
 		private AfficheSprite afficheSprite;
-		private PersoController persoController;
+		private PersonnageListener persoController;
+		private GameContactListener gameController;
 		private OrthogonalTiledMapRenderer mondeSprite;
 
 		//++++++++++++++++++++++++++++++++++++++++++++Fonction liée a Screen
@@ -64,19 +67,20 @@ public class GameScreen implements Screen{
 			debugRenderer = new Box2DDebugRenderer(); //Création du mode debug
 			
 			//Création de la caméra
-			this.camera = new OrthographicCamera(VariableGeneral.LARGEUR_FENETRE, VariableGeneral.HAUTEUR_FENETRE);//Monde de 10*8 blocks
-			this.camera.position.set(VariableGeneral.LARGEUR_FENETRE/2, VariableGeneral.HAUTEUR_FENETRE/2, 0);//Centre de la caméra au mileu
+			this.camera = new OrthographicCamera(Constants.WINDOWS_WIDTH, Constants.WINDOWS_HEIGHT);//Monde de 10*8 blocks
+			this.camera.position.set(Constants.WINDOWS_WIDTH/2, Constants.WINDOWS_HEIGHT/2, 0);//Centre de la caméra au mileu
 			this.camera.update();
 			
 			//Chargement du niveau dans le world
 			world = new World(new Vector2(0, -9.81f), true);//Création d'un monde avec un gravité a 9.81
 			ChargPerso = new ChargementPersonnage(1);//Chargement du niveau 1
-			mondeSprite = ChargementNiveau.chargerDecor(world); //Chargement du decor
-			player = ChargementNiveau.chargerPersonnage(world, ChargPerso, 1);//Chargement du personnage
+			mondeSprite = LevelManager.chargerDecor(world); //Chargement du decor
+			player = LevelManager.chargerPersonnage(world, ChargPerso, 1);//Chargement du personnage
 			
 			//Liste des écouteurs a charger
-			persoController = new PersoController(player, ChargPerso);
-			world.setContactListener(persoController); 
+			gameController = new GameContactListener(player, ChargPerso);
+			persoController = new PersonnageListener(player, gameController);
+			world.setContactListener(gameController); 
 			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les différents clique
 				 
 			
@@ -93,8 +97,8 @@ public class GameScreen implements Screen{
 			
 			OrthographicCamera camera2 = new OrthographicCamera();
 			
-			int largeur = VariableGeneral.LARGEUR_FENETRE*VariableGeneral.COTE_BLOCK;
-			int hauteur = VariableGeneral.HAUTEUR_FENETRE*VariableGeneral.COTE_BLOCK;
+			int largeur = Constants.WINDOWS_WIDTH*Constants.COTE_BLOCK;
+			int hauteur = Constants.WINDOWS_HEIGHT*Constants.COTE_BLOCK;
 			
 			camera2.setToOrtho(false, largeur,hauteur);
 			mondeSprite.setView(camera2);
