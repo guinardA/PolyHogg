@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="10" height="8" tilewidth="32" tileheight="32">
- <tileset firstgid="1" name="block" tilewidth="32" tileheight="32">
-  <image source="block.png" width="48" height="48"/>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_dungeon32" tilewidth="32" tileheight="32">
+  <image source="./dg_dungeon32.gif" width="288" height="320"/>
  </tileset>
- <layer name="block" width="10" height="8">
+ <tileset firstgid="91" name="dg_extra132" tilewidth="32" tileheight="32">
+  <image source="./dg_extra132.gif" width="288" height="512"/>
+ </tileset>
+ <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="./dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <tileset firstgid="352" name="clouds" tilewidth="32" tileheight="32">
+  <image source="./clouds.png" width="672" height="420"/>
+ </tileset>
+ <layer name="decor" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjZGBgYCQSYwOMaGxS1BFjNi45YtURsotYv+PCABvEAC4=
+   eJzdz1WrVFEYBuCZDSbYCRZ2i103dnd3gXHM450/x+7u7s57u7AFW2x9hpnFWWNdeuELD/PuFd/ek0r9u8xIp1JLWcZyVrCSVaxmDWtZx3o2sJFNbGYLW9nGdnawMzczMztkib6L3exhL/vYzwEOcojDHOEoxzjOCU5yitOc4Sznopkhl/TzXOBiOvt8mSvpX//7n3LV2Wtc5wY3o5kh9/Vb3OYOd7kX7T/QH/KIxzzhKc94Hp17ob/kFa+jmSEf9De85R3vo72P+ic+84WvfON75kySSqVJkqLzxfTilEiKZoaUsVaSUpRO8tfLUo7yVKAilahMFapSjerRvRp6zWhmSD29FrWpk1uvm2TX69OAhjSiMU1oSjOa04KWtMrdbe23TTQzpK/elna0pwMd6URnutA1Oh/SzVp3etCTXvSmT5I/M2SS3o/+DGAggxjMEIYyjOGMYCSjGM0YxjKO8UxgYpI/MyRzdjJTmPqb7w6ZZW82cyj4y7lCe4ujmSFz9fk/vWsa01nEzCT7joJIeFfm7rzc/QUszN0pTIq+63/MD2zmbDg=
+  </data>
+ </layer>
+ <layer name="pg" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6gtCBdsAQBQBtSABW
+  </data>
+ </layer>
+ <layer name="pd" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB0IH2gE0AABMFABW
+  </data>
+ </layer>
+ <layer name="ralentisseur" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRAAJcjBA8WAEAE0IAFw==
+  </data>
+ </layer>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzN0dsNgzAMhWFnDIZiB+Ypl1JoubTAQEzFjxCPTZwgEJa+N9snkWMRSYzIAyky5CjwRIkXKtR444MGLTr0+OKHASMms+1dxbI5u+6UMysdydHs0PTZcrQZmv5/Ob4ZrjlbTmj55Nh2aG9/JCe0XPdxvV/bd8Vf9oqMn9C5qyyrrTif
   </data>
  </layer>
 </map>

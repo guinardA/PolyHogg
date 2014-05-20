@@ -2,17 +2,14 @@ package com.PolyHogg.view;
 
 import com.PolyHogg.controller.GameContactListener;
 import com.PolyHogg.controller.PersonnageListener;
-import com.PolyHogg.manager.ChargementPersonnage;
 import com.PolyHogg.manager.LevelManager;
-import com.PolyHogg.temporaire.AfficheSprite;
+import com.PolyHogg.model.Player;
 import com.PolyHogg.utils.Constants;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -23,17 +20,15 @@ import com.badlogic.gdx.physics.box2d.World;
  */
 public class GameScreen extends PolyHogScreen{
 		//Sans Box2D
-		private ChargementPersonnage ChargPerso;
-		private ChargementPersonnage ChargPerso2;
 		private World world;
 		private Box2DDebugRenderer debugRenderer;
-		private Body player;//Personnage du monde
-		private Body player2;//Personnage du monde
+		private Player player1;
+		private Player player2;
 		private OrthographicCamera camera;
-		private AfficheSprite afficheSprite;
 		private PersonnageListener persoController;
 		private GameContactListener gameController;
 		private OrthogonalTiledMapRenderer mondeSprite;
+		private LevelManager levelManager;
 
 		//++++++++++++++++++++++++++++++++++++++++++++Fonction liée a Screen
 		@Override
@@ -76,18 +71,15 @@ public class GameScreen extends PolyHogScreen{
 			//Chargement du niveau dans le world
 			world = new World(new Vector2(0, -19.81f), true);//Création d'un monde avec un gravité a 9.81
 			
-			ChargPerso = new ChargementPersonnage(1,1);//Chargement du niveau 1
-			ChargPerso2 = new ChargementPersonnage(1,2);//Chargement du niveau 1
-			
-			mondeSprite = LevelManager.chargerDecor(world); //Chargement du decor
-			
-			player = LevelManager.chargerPersonnage(world, ChargPerso, 1);//Chargement du personnage
-			
-			player2 = LevelManager.chargerPersonnage(world, ChargPerso2, 1);//Chargement du personnage
+			//Chargement du level
+			levelManager = new LevelManager(world, "map");
+			mondeSprite = levelManager.createWorld();
+			player1 = levelManager.getPlayer1();
+			player2 = levelManager.getPlayer2();
 			
 			//Liste des écouteurs a charger
-			gameController = new GameContactListener(player, ChargPerso);
-			persoController = new PersonnageListener(player, player2, gameController);
+			gameController = new GameContactListener(player1, player2);
+			persoController = new PersonnageListener(player1, player2, gameController);
 			world.setContactListener(gameController); 
 			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les différents clique
 				 
@@ -109,17 +101,31 @@ public class GameScreen extends PolyHogScreen{
 			int hauteur = Constants.WINDOWS_HEIGHT*Constants.COTE_BLOCK;
 			
 			camera2.setToOrtho(false, largeur,hauteur);
+			
 			mondeSprite.setView(camera2);
 			mondeSprite.render();
 			
-			afficheSprite = new AfficheSprite();
-			afficheSprite.afficher(camera, player);
+			if(player1.getFinish()){
+				player1.setFinish(false);
+				levelManager.setLevel(levelManager.getLevel()+1);
+				mondeSprite = levelManager.createWorld();
+			}
+			
+			else if(player2.getFinish()){
+				player2.setFinish(false);
+				levelManager.setLevel(levelManager.getLevel()-1);
+				mondeSprite = levelManager.createWorld();
+			}
+			
+			//A CHANGER AVEC ANIMATION
+			player1.afficherSprite(camera);
+			player2.afficherSprite(camera);
 			
 		    ///Affiché le mode debug
 			debugRenderer.render(world, camera.combined);
 			
 			/* Step the simulation with a fixed time step of 1/60 of a second */
-			world.step(1 / 40f, 6, 2);
+			world.step(1 / 60f, 6, 2);
 			
 		}
 }
