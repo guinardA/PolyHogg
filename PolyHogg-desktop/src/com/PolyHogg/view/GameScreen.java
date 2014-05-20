@@ -21,12 +21,14 @@ import com.badlogic.gdx.physics.box2d.World;
  * Classe qui définie écran de jeu (Existe plusieurs types écran intro et game over)
  * @author arnaud
  */
-public class GameScreen implements Screen{
+public class GameScreen extends PolyHogScreen{
 		//Sans Box2D
 		private ChargementPersonnage ChargPerso;
+		private ChargementPersonnage ChargPerso2;
 		private World world;
 		private Box2DDebugRenderer debugRenderer;
 		private Body player;//Personnage du monde
+		private Body player2;//Personnage du monde
 		private OrthographicCamera camera;
 		private AfficheSprite afficheSprite;
 		private PersonnageListener persoController;
@@ -72,14 +74,20 @@ public class GameScreen implements Screen{
 			this.camera.update();
 			
 			//Chargement du niveau dans le world
-			world = new World(new Vector2(0, -9.81f), true);//Création d'un monde avec un gravité a 9.81
-			ChargPerso = new ChargementPersonnage(1);//Chargement du niveau 1
+			world = new World(new Vector2(0, -19.81f), true);//Création d'un monde avec un gravité a 9.81
+			
+			ChargPerso = new ChargementPersonnage(1,1);//Chargement du niveau 1
+			ChargPerso2 = new ChargementPersonnage(1,2);//Chargement du niveau 1
+			
 			mondeSprite = LevelManager.chargerDecor(world); //Chargement du decor
+			
 			player = LevelManager.chargerPersonnage(world, ChargPerso, 1);//Chargement du personnage
+			
+			player2 = LevelManager.chargerPersonnage(world, ChargPerso2, 1);//Chargement du personnage
 			
 			//Liste des écouteurs a charger
 			gameController = new GameContactListener(player, ChargPerso);
-			persoController = new PersonnageListener(player, gameController);
+			persoController = new PersonnageListener(player, player2, gameController);
 			world.setContactListener(gameController); 
 			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les différents clique
 				 
