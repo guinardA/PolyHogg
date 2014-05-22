@@ -46,7 +46,8 @@ public class PersonnageListener implements  InputProcessor{
 			player1.downGarde();
 		}
 
-		if (keycode == Keys.NUM_1){
+		if (keycode == Keys.SHIFT_RIGHT){
+			System.out.println("contact");
 			contact.jump();
 		}
 		
@@ -66,9 +67,6 @@ public class PersonnageListener implements  InputProcessor{
 		}
 		if (keycode == Keys.S){
 			player2.downGarde();
-		}
-		if (keycode == Keys.NUMPAD_1){
-			contact.jump();
 		}
 		return true;
 	}

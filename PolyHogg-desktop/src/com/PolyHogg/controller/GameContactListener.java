@@ -31,7 +31,7 @@ public class GameContactListener implements ContactListener{
 				joueurTerre = true;
 			} else {
 				
-				if (userData2 != null && userData == "pied") {
+				if (userData2 != null && userData2 == "pied") {
 					joueurTerre = true;
 				}
 			}
