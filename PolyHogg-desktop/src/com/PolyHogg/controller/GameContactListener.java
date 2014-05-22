@@ -27,22 +27,28 @@ public class GameContactListener implements ContactListener{
 			Object userData2 = contact.getFixtureB().getUserData();
 
 			//CONTACT AVEC LE SOL
-			if (userData != null && userData == "pied") {
+			if (userData != null && userData == "pied" && userData2 != null && userData2 == "blocStatique") {
 				joueurTerre = true;
 			} else {
 				
-				if (userData2 != null && userData2 == "pied") {
+				if (userData2 != null && userData2 == "pied" && userData != null && userData == "blocStatique") {
 					joueurTerre = true;
 				}
 			}
 
-			if((userData != null && userData == "porteDroit" && userData2 != null && userData2 == "hitbox") 
-				|| (userData2 != null && userData2 == "porteDroit" && userData != null && userData == "hitbox")){
-				//player2.setFinish(true);
+			if((userData != null && userData == "porteDroit" && userData2 != null && userData2 == "hitbox2") 
+				|| (userData2 != null && userData2 == "porteDroit" && userData != null && userData == "hitbox2")){
+				player2.setFinish(true);
+			}
+			
+			if((userData != null && userData == "porteGauche" && userData2 != null && userData2 == "hitbox1") 
+					|| (userData2 != null && userData2 == "porteGauche" && userData != null && userData == "hitbox1")){
+					player1.setFinish(true);
 			}
 			
 			//CONTACT ENTRE 2 JOUEURS
-			if ((userData != null && userData == "hitbox") && (userData2 != null && userData2 == "hitbox")) {
+			if (((userData != null && userData == "hitbox1") && (userData2 != null && userData2 == "hitbox2"))
+				|| (userData != null && userData == "hitbox2") && (userData2 != null && userData2 == "hitbox1")) {
 				this.attack();
 			}
 		}
@@ -51,13 +57,14 @@ public class GameContactListener implements ContactListener{
 		public void endContact(Contact contact) {
 
 			Object userData = contact.getFixtureA().getUserData();
+			Object userData2 = contact.getFixtureB().getUserData();
 
 			//On verifie que le personnage ne touche pas le sol pour qu'il ne puisse pas sauter
-			if (userData != null && userData == "pied") {
+			if (userData != null && userData == "pied" && userData2 != null && userData2 == "blocStatique") {
 				joueurTerre = false;
 			} else {
-				userData = contact.getFixtureB().getUserData();
-				if (userData != null && userData == "pied") {
+				
+				if (userData2 != null && userData2 == "pied" && userData != null && userData == "blocStatique") {
 					joueurTerre = false;
 				}
 			}
@@ -81,7 +88,7 @@ public class GameContactListener implements ContactListener{
 
 			if(joueurTerre){
 				player1.setState(State.JUMPING); // Passe a ete deplacement
-				float impulse = player1.getPlayer().getMass() * 6;//Impulsion au joueur
+				float impulse = player1.getPlayer().getMass() * 10;//Impulsion au joueur
 				 player1.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player1.getPlayer().getWorldCenter(), true);
 			}
 		}

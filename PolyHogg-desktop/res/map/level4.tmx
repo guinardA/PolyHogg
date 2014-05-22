@@ -9,32 +9,48 @@
  <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
   <image source="./dg_features32.gif" width="288" height="416"/>
  </tileset>
- <tileset firstgid="352" name="clouds" tilewidth="32" tileheight="32">
-  <image source="./clouds.png" width="672" height="420"/>
+ <tileset firstgid="352" name="ShieldCrestedLion" tilewidth="32" tileheight="32">
+  <image source="./ShieldCrestedLion.PNG" trans="ff00ff" width="32" height="32"/>
  </tileset>
- <layer name="decor" width="26" height="14">
+ <tileset firstgid="353" name="Scroll0010" tilewidth="32" tileheight="32">
+  <image source="./Scroll0010.PNG" trans="ff00ff" width="32" height="32"/>
+ </tileset>
+ <tileset firstgid="354" name="ShieldCrossed" tilewidth="32" tileheight="32">
+  <image source="./ShieldCrossed.PNG" trans="ff00ff" width="32" height="32"/>
+ </tileset>
+ <layer name="ralentisseur" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJzdz1WrVFEYBuCZDSbYCRZ2i103dnd3gXHM450/x+7u7s57u7AFW2x9hpnFWWNdeuELD/PuFd/ek0r9u8xIp1JLWcZyVrCSVaxmDWtZx3o2sJFNbGYLW9nGdnawMzczMztkib6L3exhL/vYzwEOcojDHOEoxzjOCU5yitOc4Sznopkhl/TzXOBiOvt8mSvpX//7n3LV2Wtc5wY3o5kh9/Vb3OYOd7kX7T/QH/KIxzzhKc94Hp17ob/kFa+jmSEf9De85R3vo72P+ic+84WvfON75kySSqVJkqLzxfTilEiKZoaUsVaSUpRO8tfLUo7yVKAilahMFapSjerRvRp6zWhmSD29FrWpk1uvm2TX69OAhjSiMU1oSjOa04KWtMrdbe23TTQzpK/elna0pwMd6URnutA1Oh/SzVp3etCTXvSmT5I/M2SS3o/+DGAggxjMEIYyjOGMYCSjGM0YxjKO8UxgYpI/MyRzdjJTmPqb7w6ZZW82cyj4y7lCe4ujmSFz9fk/vWsa01nEzCT7joJIeFfm7rzc/QUszN0pTIq+63/MD2zmbDg=
+   eJxjYBgFo2DkAi5G4sRGwSgYDAAAP/IAFw==
   </data>
  </layer>
  <layer name="pg" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjAL6gtCBdsAQBQBtSABW
+   eJxjYBgFo2AUjAL6gjsD7YAhCgAR3wDd
   </data>
  </layer>
  <layer name="pd" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjILhB0IH2gE0AABMFABW
+   eJxjYBgFo2AUjILhB+4MtANoAAC74ADd
   </data>
  </layer>
- <layer name="ralentisseur" width="26" height="14">
+ <layer name="dynamique" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRAAJcjBA8WAEAE0IAFw==
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
   </data>
  </layer>
  <layer name="statique" width="26" height="14">
   <data encoding="base64" compression="zlib">
-   eJzN0dsNgzAMhWFnDIZiB+Ypl1JoubTAQEzFjxCPTZwgEJa+N9snkWMRSYzIAyky5CjwRIkXKtR444MGLTr0+OKHASMms+1dxbI5u+6UMysdydHs0PTZcrQZmv5/Ob4ZrjlbTmj55Nh2aG9/JCe0XPdxvV/bd8Vf9oqMn9C5qyyrrTif
+   eJzdlMEKACAIQ/3/P9R+pmvIdFbkoWAEOvc8OURkNOn16+RYA8c+5GgDRwlHg5/1djhrT4HX16pZqH7CyfIiBts14qDMjHHD8X4j8h40V8mp3D50CzMP0gQWSXqV
+  </data>
+ </layer>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy9k1EKwCAMQ+tFPFKh97/M9qFQsqZVGQbCtJO81jGRe+qvbTy9dRjrK/Z5nhPl3eRUebMXI3cScXZmUuKKs9o/mynrDzl/eocjcE7gncAZNuNUNDdmZBwtemacqNeVeRgrqqMU1v5eGIdlMgZmWHP/Ycs5VS5KYV99n1P19t1HtUoPFyAhHA==
+  </data>
+ </layer>
+ <layer name="decor2" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUDBWQyEhYTRKSmgQi1I+CoQMAMa8BJw==
   </data>
  </layer>
 </map>

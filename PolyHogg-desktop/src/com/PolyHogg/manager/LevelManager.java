@@ -3,8 +3,6 @@ package com.PolyHogg.manager;
 import com.PolyHogg.model.Player;
 import com.PolyHogg.utils.BodyFactory;
 import com.PolyHogg.utils.Constants;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer.Cell;
@@ -13,6 +11,7 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * Classe qui a pour role de charger un niveau au monde 
@@ -42,7 +41,14 @@ public class LevelManager {
 	public OrthogonalTiledMapRenderer createWorld(){
 
 		//Chargement du level
-		String url = "res/"+dossier+"/level"+String.valueOf(level)+".tmx";
+		String url;
+		if(level > 5){
+			url = "res/"+dossier+"/level"+String.valueOf(5-(level-5))+".tmx";
+		}
+		else{
+			url = "res/"+dossier+"/level"+String.valueOf(level)+".tmx";
+		}
+		
 		tileMap = new TmxMapLoader().load(url);
 		tmr = new OrthogonalTiledMapRenderer(tileMap);
 
@@ -156,10 +162,10 @@ public class LevelManager {
 		
 		//Mise en place des players
 		player1 = new Player(new Vector2(24, 2),true); //Position de d��part du personnage
-		player1.createCorps(world);
+		player1.createCorps(world,1);
 		
 		player2 = new Player(new Vector2(1, 2),false); //Position de d��part du personnage
-		player2.createCorps(world);
+		player2.createCorps(world,2);
 		
 		return tmr;
 	}
@@ -174,6 +180,15 @@ public class LevelManager {
 	
 	public void setLevel(int i){
 		this.level = i;
+	}
+	
+	public void clearWorld(){
+		Array<Body> list = new Array<Body>();
+		this.world.getBodies(list);
+		
+		for(int i=0; i<list.size;i++){
+			this.world.destroyBody(list.get(i));
+		}
 	}
 	
 	public int getLevel(){

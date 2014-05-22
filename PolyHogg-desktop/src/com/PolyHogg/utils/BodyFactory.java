@@ -105,24 +105,25 @@ public class BodyFactory {
 		
 		
 		if(type.equals("statique")){
-			body.setUserData("blocStatique");
+			body.createFixture(physique).setUserData("blocStatique");
+			body.setFixedRotation(true);
 		}
 		else if(type.equals("ralentisseur")){
 			body.setUserData("blocRalentisseur");
 		}
 		else if(type.equals("pd")){
-			//body.setUserData("porteDroit");
-			body.createFixture(physique).setUserData("porteDroit");//Permet de savoir si le personange touche le sol ou pas
+			body.createFixture(physique).setUserData("porteDroit");
 			body.setFixedRotation(true);
 		}
 		else if(type.equals("pg")){
-			body.setUserData("porteGauche");
+			body.createFixture(physique).setUserData("porteGauche");
+			body.setFixedRotation(true);
 		}
 		
 		return body;
 	}
 	
-	public static Body createPlayer(Player perso, World world){
+	public static Body createPlayer(Player perso, World world, int joueur){
 		
 		//Corps
 		Shape primitive =  createSquare(perso.getBounds().width/2, perso.getBounds().height/2, new Vector2(perso.getBounds().width/2,perso.getBounds().height/2), 0);
@@ -139,7 +140,12 @@ public class BodyFactory {
 		//HitBox
 		primitive =  BodyFactory.createSquare(perso.getBounds().width/2, perso.getBounds().height/2,new Vector2(perso.getBounds().width/2,perso.getBounds().height/2), 0);
 		physique = BodyFactory.physicalProperties(primitive, true, 0, 0, 0);
-		body.createFixture(physique).setUserData("hitbox");//Permet de savoir si le personange touche le sol ou pas
+		if(joueur == 1){
+			body.createFixture(physique).setUserData("hitbox1");//Permet de savoir si le personange touche le sol ou pas
+		}
+		else{
+			body.createFixture(physique).setUserData("hitbox2");
+		}
 		body.setFixedRotation(true); //Empeche le carre de glisser et de tomber
 		
 		body.setUserData("joueur");

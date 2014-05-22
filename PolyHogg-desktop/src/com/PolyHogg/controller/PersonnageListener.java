@@ -47,7 +47,6 @@ public class PersonnageListener implements  InputProcessor{
 		}
 
 		if (keycode == Keys.SHIFT_RIGHT){
-			System.out.println("contact");
 			contact.jump();
 		}
 		

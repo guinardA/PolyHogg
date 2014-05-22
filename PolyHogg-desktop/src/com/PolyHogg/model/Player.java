@@ -59,8 +59,8 @@ public class Player {
 		this.animation = new PersonnageAnimation(this);
 	}
 	
-	public Body createCorps(World world) {
-		player = BodyFactory.createPlayer(this, world);
+	public Body createCorps(World world, int joueur) {
+		player = BodyFactory.createPlayer(this, world, joueur);
 		return player;
 	}
 	

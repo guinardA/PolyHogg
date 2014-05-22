@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -74,15 +75,7 @@ public class GameScreen extends PolyHogScreen{
 			//Chargement du level
 			levelManager = new LevelManager(world, "map");
 			mondeSprite = levelManager.createWorld();
-			player1 = levelManager.getPlayer1();
-			player2 = levelManager.getPlayer2();
-			
-			//Liste des ��couteurs a charger
-			gameController = new GameContactListener(player1, player2);
-			persoController = new PersonnageListener(player1, player2, gameController);
-			world.setContactListener(gameController); 
-			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les diff��rents clique
-				 
+			this.loadWorld();	 
 			
 		}
 
@@ -108,13 +101,19 @@ public class GameScreen extends PolyHogScreen{
 			if(player1.getFinish()){
 				player1.setFinish(false);
 				levelManager.setLevel(levelManager.getLevel()+1);
+				world.setContactListener(null);
+				levelManager.clearWorld();
 				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
 			}
 			
 			else if(player2.getFinish()){
 				player2.setFinish(false);
 				levelManager.setLevel(levelManager.getLevel()-1);
+				world.setContactListener(null);
+				levelManager.clearWorld();
 				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
 			}
 			
 			//A CHANGER AVEC ANIMATION
@@ -128,4 +127,15 @@ public class GameScreen extends PolyHogScreen{
 			world.step(1 / 60f, 6, 2);
 			
 		}
+		
+		private void loadWorld(){
+			player1 = levelManager.getPlayer1();
+			player2 = levelManager.getPlayer2();
+			//Liste des ��couteurs a charger
+			gameController = new GameContactListener(player1, player2);
+			persoController = new PersonnageListener(player1, player2, gameController);
+			world.setContactListener(gameController); 
+			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les diff��rents clique
+		}
+
 }
