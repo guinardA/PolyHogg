@@ -4,6 +4,7 @@ import com.PolyHogg.utils.BodyFactory;
 import com.PolyHogg.utils.Constants;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -18,71 +19,59 @@ import com.badlogic.gdx.physics.box2d.World;
  *
  */
 public class Player {
-	public enum State {
-		IDLE, WALKING, JUMPING, DYING
-	}
+
 	/*
-	 * IDLE : Lorsqu’il ne bouge ou saute pas ET est envie.
+	 * IDLE : Lorsqu���il ne bouge ou saute pas ET est envie.
 	 * WALKING : Deplacement de gauche ou droite a une vitesse constante.
 	 * JUMPING : Deplacement en hauteur de gauche ou droite.
 	 * DYING : Invisible et regeneration
 	 */
+	public enum State {
+		IDLE, WALKING, JUMPING, DYING
+	}
+
+	private State state = State.IDLE;//etat du personnage
+	private boolean facingLeft;//personnage tourne vers la gauche
+	float stateTime = 0;
 
 	private Vector2     position = new Vector2(); //position de Bob dans le monde
 	private Vector2     acceleration = new Vector2(); //acceleration en XY lorsque le personnage saute
 	private Vector2     velocity = new Vector2(); //vitesse de deplacement du personnage
 	private Rectangle   bounds = new Rectangle(); //limite du personnage
-	private State       state = State.IDLE;//etat du personnage
-	private boolean    facingLeft = true;//personnage tourne vers la gauche
-	private int 		garde = 1;
-	private Body 		player;
+	
+	private int garde = 1;
+	private Body player;
 	private boolean	life = true;
 	private boolean	finish = false;
+	
+	private boolean personnageRouge;
+	
+	private PersonnageAnimation animation;
 
-	public Player(Vector2 position) {
+	public Player(Vector2 position,boolean rouge) {
 		this.position = position;
 		this.bounds.height = Constants.SIZE_PERSO;
 		this.bounds.width = Constants.SIZE_PERSO;
 		this.bounds.x = this.position.x;
 		this.bounds.y = this.position.y;
+		this.facingLeft = rouge;
+		this.personnageRouge = rouge;
+		this.animation = new PersonnageAnimation(this);
 	}
 	
-	//MÉTHODE A CHANGER POUR ANIMATIONS
 	public Body createCorps(World world) {
-		Sprite sprite;
-
-		//Chargement du sprite perosnnage
-		sprite = new Sprite(new Texture("images/bob_01.png"));
-		sprite.setSize(bounds.width, bounds.height);
-		sprite.setOrigin(sprite.getWidth() / 2, sprite.getHeight() / 2);
-
-		player = BodyFactory.createPlayer(sprite, this, world);
-		
+		player = BodyFactory.createPlayer(this, world);
 		return player;
-
 	}
-	//MÉTHODE A CHANGER POUR ANIMATIONS
-	public void afficherSprite( OrthographicCamera camera){
+	
+	
+	public void update(OrthographicCamera camera,float delta){
 		SpriteBatch batch;
-
 		batch = new SpriteBatch();
 		batch.setProjectionMatrix(camera.combined);
-		
 		batch.begin();
-
-		Sprite sprite = (Sprite) this.getPlayer().getUserData();//On récuèpere le sprite lié au corps
-
-		//On place les sprité au mêmes coordonnée que les block
-		
-		Vector2 position = player.getPosition();
-		sprite.setPosition(position.x,position.y);
-		sprite.setRotation(this.getPlayer().getAngle() * MathUtils.radiansToDegrees);
-
-		//On dessine les sprites sur écran
-		sprite.draw(batch);
+		batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
 		batch.end();
-		
-
 	}
 	
 	public boolean getFinish(){
@@ -132,6 +121,20 @@ public class Player {
 	public void setFacingLeft(boolean face){
 		facingLeft = face;
 	}
+
+
+	public boolean isFacingLeft() {
+		return facingLeft;
+	}
+
+	public State getState() {
+		return state;
+	}
+
+	public boolean isPersonnageRouge() {
+		return personnageRouge;
+	}
+
 	public void setState(State etat){
 		state = etat;
 	}

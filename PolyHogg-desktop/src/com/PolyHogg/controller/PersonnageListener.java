@@ -1,6 +1,7 @@
 package com.PolyHogg.controller;
 
 import com.PolyHogg.model.Player;
+import com.PolyHogg.model.Player.State;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 
@@ -28,17 +29,23 @@ public class PersonnageListener implements  InputProcessor{
 		//Touche du joueur 1
 		if (keycode == Keys.LEFT){
 			player1.getPlayer().setLinearVelocity(-4,0);
+			player1.setState(State.WALKING);
+			player1.setFacingLeft(true);
 		}
 
 		if (keycode == Keys.RIGHT){
 			player1.getPlayer().setLinearVelocity(4,0);
+			player1.setState(State.WALKING);
+			player1.setFacingLeft(false);
 		}
+		
 		if (keycode == Keys.UP){
 			player1.upGarde();
 		}
 		if (keycode == Keys.DOWN){
 			player1.downGarde();
 		}
+
 		if (keycode == Keys.NUM_1){
 			contact.jump();
 		}
@@ -46,9 +53,13 @@ public class PersonnageListener implements  InputProcessor{
 		//Touche du joueur 2
 		if (keycode == Keys.Q){
 			player2.getPlayer().setLinearVelocity(-4,0);
+			player2.setState(State.WALKING);
+			player2.setFacingLeft(true);
 		}
 		if (keycode == Keys.D){
 			player2.getPlayer().setLinearVelocity(4,0);
+			player2.setState(State.WALKING);
+			player2.setFacingLeft(false);
 		}
 		if (keycode == Keys.Z){
 			player2.upGarde();
@@ -67,16 +78,20 @@ public class PersonnageListener implements  InputProcessor{
 	public boolean keyUp(int keycode) {
 		if (keycode == Keys.LEFT){
 			player1.getPlayer().setLinearVelocity(0,0);
+			player1.setState(State.IDLE);
 		}
 
 		if (keycode == Keys.RIGHT){
 			player1.getPlayer().setLinearVelocity(0,0);
+			player1.setState(State.IDLE);
 		}
 		if (keycode == Keys.Q){
 			player2.getPlayer().setLinearVelocity(0,0);
+			player2.setState(State.IDLE);
 		}
 		if (keycode == Keys.D){
 			player2.getPlayer().setLinearVelocity(0,0);
+			player2.setState(State.IDLE);
 		}
 		return true;
 	}

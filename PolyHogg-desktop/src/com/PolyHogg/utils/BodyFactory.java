@@ -86,10 +86,10 @@ public class BodyFactory {
 	}
 	
 	/**
-	 * Permet de créer un block Normal avec toutes les bonne propriété
-	 * @param v - Tableau de cordonnée pour créer la primitive
+	 * Permet de cr��er un block Normal avec toutes les bonne propri��t��
+	 * @param v - Tableau de cordonn��e pour cr��er la primitive
 	 * @param position - Position de la primitive dans le monde
-	 * @param world - Monde ou il faut lié la primitive
+	 * @param world - Monde ou il faut li�� la primitive
 	 * @param type - Type de block
 	 * @return Un corps de bloc
 	 */
@@ -122,7 +122,7 @@ public class BodyFactory {
 		return body;
 	}
 	
-	public static Body createPlayer(Sprite sprite, Player perso, World world){
+	public static Body createPlayer(Player perso, World world){
 		
 		//Corps
 		Shape primitive =  createSquare(perso.getBounds().width/2, perso.getBounds().height/2, new Vector2(perso.getBounds().width/2,perso.getBounds().height/2), 0);
@@ -143,9 +143,6 @@ public class BodyFactory {
 		body.setFixedRotation(true); //Empeche le carre de glisser et de tomber
 		
 		body.setUserData("joueur");
-
-		//On lie le sprite au personnage
-		body.setUserData(sprite);
 		
 		return body;
 	}

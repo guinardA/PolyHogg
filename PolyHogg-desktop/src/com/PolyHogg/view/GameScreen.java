@@ -15,7 +15,7 @@ import com.badlogic.gdx.physics.box2d.World;
 
 
 /**
- * Classe qui définie écran de jeu (Existe plusieurs types écran intro et game over)
+ * Classe qui d��finie ��cran de jeu (Existe plusieurs types ��cran intro et game over)
  * @author arnaud
  */
 public class GameScreen extends PolyHogScreen{
@@ -30,14 +30,14 @@ public class GameScreen extends PolyHogScreen{
 		private OrthogonalTiledMapRenderer mondeSprite;
 		private LevelManager levelManager;
 
-		//++++++++++++++++++++++++++++++++++++++++++++Fonction liée a Screen
+		//++++++++++++++++++++++++++++++++++++++++++++Fonction li��e a Screen
 		@Override
 		public void resize(int width, int height) {
 		}
 
 		@Override
 		public void hide() {
-			//Quand la fênetre est caché on désactive l'écoute
+			//Quand la f��netre est cach�� on d��sactive l'��coute
 			Gdx.input.setInputProcessor(null);
 		}
 
@@ -51,25 +51,25 @@ public class GameScreen extends PolyHogScreen{
 
 		@Override
 		public void dispose() {
-			//Quand la fenetre est en arrière plan, on met le jeu en pause
+			//Quand la fenetre est en arri��re plan, on met le jeu en pause
 			debugRenderer.dispose();
 			world.dispose();
 			Gdx.input.setInputProcessor(null);	
 		}
 
-		//Fonction lancé pour affiché écran et ensuite lance le render
+		//Fonction lanc�� pour affich�� ��cran et ensuite lance le render
 		@Override
 		public void show() {
 			
-			debugRenderer = new Box2DDebugRenderer(); //Création du mode debug
+			debugRenderer = new Box2DDebugRenderer(); //Cr��ation du mode debug
 			
-			//Création de la caméra
+			//Cr��ation de la cam��ra
 			this.camera = new OrthographicCamera(Constants.WINDOWS_WIDTH, Constants.WINDOWS_HEIGHT);//Monde de 10*8 blocks
-			this.camera.position.set(Constants.WINDOWS_WIDTH/2, Constants.WINDOWS_HEIGHT/2, 0);//Centre de la caméra au mileu
+			this.camera.position.set(Constants.WINDOWS_WIDTH/2, Constants.WINDOWS_HEIGHT/2, 0);//Centre de la cam��ra au mileu
 			this.camera.update();
 			
 			//Chargement du niveau dans le world
-			world = new World(new Vector2(0, -19.81f), true);//Création d'un monde avec un gravité a 9.81
+			world = new World(new Vector2(0, -19.81f), true);//Cr��ation d'un monde avec un gravit�� a 9.81
 			
 			//Chargement du level
 			levelManager = new LevelManager(world, "map");
@@ -77,16 +77,16 @@ public class GameScreen extends PolyHogScreen{
 			player1 = levelManager.getPlayer1();
 			player2 = levelManager.getPlayer2();
 			
-			//Liste des écouteurs a charger
+			//Liste des ��couteurs a charger
 			gameController = new GameContactListener(player1, player2);
 			persoController = new PersonnageListener(player1, player2, gameController);
 			world.setContactListener(gameController); 
-			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les différents clique
+			Gdx.input.setInputProcessor(persoController); //Ecouteur sur les diff��rents clique
 				 
 			
 		}
 
-		//Lancé directement après la fonction show, cette fonction doit être unique 
+		//Lanc�� directement apr��s la fonction show, cette fonction doit ��tre unique 
 		@Override
 		public void render(float delta) {
 			
@@ -118,10 +118,10 @@ public class GameScreen extends PolyHogScreen{
 			}
 			
 			//A CHANGER AVEC ANIMATION
-			player1.afficherSprite(camera);
-			player2.afficherSprite(camera);
+			player1.update(camera,delta);
+			player2.update(camera,delta);
 			
-		    ///Affiché le mode debug
+		    ///Affich�� le mode debug
 			debugRenderer.render(world, camera.combined);
 			
 			/* Step the simulation with a fixed time step of 1/60 of a second */

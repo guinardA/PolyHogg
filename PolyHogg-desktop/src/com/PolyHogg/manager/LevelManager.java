@@ -34,7 +34,7 @@ public class LevelManager {
 
 	public LevelManager(World world, String dossier){
 		this.world = world;
-		level = 5; //Les niveaux de vont de 1 à 9 et de gauche a droite
+		level = 5; //Les niveaux de vont de 1 �� 9 et de gauche a droite
 		this.dossier = dossier;
 	}
 
@@ -46,7 +46,7 @@ public class LevelManager {
 		tileMap = new TmxMapLoader().load(url);
 		tmr = new OrthogonalTiledMapRenderer(tileMap);
 
-		//Mise en place des différents block
+		//Mise en place des diff��rents block
 
 
 		//Block statique
@@ -58,7 +58,7 @@ public class LevelManager {
 			for(int col=0;col<layer.getWidth();col++){
 				Cell cell = layer.getCell(col , row);
 
-				//Création des différentes primitive
+				//Cr��ation des diff��rentes primitive
 				if( cell != null && cell.getTile() != null ){
 					Vector2[] v = new Vector2[5];
 					v[0] = new Vector2( -Constants.SIZE_BLOCK/2, -Constants.SIZE_BLOCK/2);//BG
@@ -69,7 +69,7 @@ public class LevelManager {
 
 					Vector2 position = new Vector2((col + Constants.SIZE_BLOCK/2) , (row + Constants.SIZE_BLOCK/2));
 
-					//Factory qui créer un corps bloc
+					//Factory qui cr��er un corps bloc
 
 					BodyFactory.createBlock(v, position, world, "statique");
 				}
@@ -85,7 +85,7 @@ public class LevelManager {
 			for(int col=0;col<layer.getWidth();col++){
 				Cell cell = layer.getCell(col , row);
 
-				//Création des différentes primitive
+				//Cr��ation des diff��rentes primitive
 				if( cell != null && cell.getTile() != null ){
 					Vector2[] v = new Vector2[5];
 					v[0] = new Vector2( -Constants.SIZE_BLOCK/2, -Constants.SIZE_BLOCK/2);//BG
@@ -96,7 +96,7 @@ public class LevelManager {
 
 					Vector2 position = new Vector2((col + Constants.SIZE_BLOCK/2) , (row + Constants.SIZE_BLOCK/2));
 
-					//Factory qui créer un corps bloc
+					//Factory qui cr��er un corps bloc
 					BodyFactory.createBlock(v, position, world, "ralentisseur");
 				}
 			}
@@ -111,7 +111,7 @@ public class LevelManager {
 			for(int col=0;col<layer.getWidth();col++){
 				Cell cell = layer.getCell(col , row);
 
-				//Création des différentes primitive
+				//Cr��ation des diff��rentes primitive
 				if( cell != null && cell.getTile() != null ){
 					Vector2[] v = new Vector2[5];
 					v[0] = new Vector2( -Constants.SIZE_BLOCK/2, -Constants.SIZE_BLOCK/2);//BG
@@ -122,7 +122,7 @@ public class LevelManager {
 
 					Vector2 position = new Vector2((col + Constants.SIZE_BLOCK/2) , (row + Constants.SIZE_BLOCK/2));
 
-					//Factory qui créer un corps bloc
+					//Factory qui cr��er un corps bloc
 					BodyFactory.createBlock(v, position, world, "pd");
 				}
 			}
@@ -137,7 +137,7 @@ public class LevelManager {
 			for(int col=0;col<layer.getWidth();col++){
 				Cell cell = layer.getCell(col , row);
 
-				//Création des différentes primitive
+				//Cr��ation des diff��rentes primitive
 				if( cell != null && cell.getTile() != null ){
 					Vector2[] v = new Vector2[5];
 					v[0] = new Vector2( -Constants.SIZE_BLOCK/2, -Constants.SIZE_BLOCK/2);//BG
@@ -148,17 +148,17 @@ public class LevelManager {
 
 					Vector2 position = new Vector2((col + Constants.SIZE_BLOCK/2) , (row + Constants.SIZE_BLOCK/2));
 
-					//Factory qui créer un corps bloc
+					//Factory qui cr��er un corps bloc
 					BodyFactory.createBlock(v, position, world, "pg");
 				}
 			}
 		}
 		
 		//Mise en place des players
-		player1 = new Player(new Vector2(24, 2)); //Position de départ du personnage
+		player1 = new Player(new Vector2(24, 2),true); //Position de d��part du personnage
 		player1.createCorps(world);
 		
-		player2 = new Player(new Vector2(1, 2)); //Position de départ du personnage
+		player2 = new Player(new Vector2(1, 2),false); //Position de d��part du personnage
 		player2.createCorps(world);
 		
 		return tmr;
