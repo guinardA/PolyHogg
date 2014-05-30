@@ -1,5 +1,7 @@
 package com.PolyHogg.view;
 
+import java.sql.Time;
+
 import com.PolyHogg.controller.GameContactListener;
 import com.PolyHogg.controller.PersonnageListener;
 import com.PolyHogg.manager.LevelManager;
@@ -10,7 +12,6 @@ import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 
@@ -90,6 +91,7 @@ public class GameScreen extends PolyHogScreen{
 			
 			OrthographicCamera camera2 = new OrthographicCamera();
 			
+			
 			int largeur = Constants.WINDOWS_WIDTH*Constants.COTE_BLOCK;
 			int hauteur = Constants.WINDOWS_HEIGHT*Constants.COTE_BLOCK;
 			
@@ -116,11 +118,44 @@ public class GameScreen extends PolyHogScreen{
 				this.loadWorld();
 			}
 			
+			//Cas ou les 2 joueurs tombe dans le vide
+			if(player1.getPlayer().getPosition().y < 0 && player2.getPlayer().getPosition().y <0){
+				world.setContactListener(null);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+			}
+
+			
+			if(!player1.getLife()){
+				//Suppresion du personnage du decor mais erreur
+				//world.destroyBody(player1.getPlayer());
+				//player1.setLife(true);
+				
+				world.setContactListener(null);
+				levelManager.setLevel(levelManager.getLevel()-1);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+			}
+			
+			else if(!player2.getLife()){
+				//Suppresion du personnage du decor mais erreur
+				//world.destroyBody(player1.getPlayer());
+				//player1.setLife(true);
+				
+				world.setContactListener(null);
+				levelManager.setLevel(levelManager.getLevel()+1);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+			}
+			
 			//A CHANGER AVEC ANIMATION
 			player1.update(camera,delta);
 			player2.update(camera,delta);
 			
-		    ///Affich�� le mode debug
+		    ///Affiche le mode debug
 			debugRenderer.render(world, camera.combined);
 			
 			/* Step the simulation with a fixed time step of 1/60 of a second */

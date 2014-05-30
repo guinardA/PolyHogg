@@ -134,7 +134,12 @@ public class BodyFactory {
 		//Pied
 		primitive =  BodyFactory.createSquare(0.1f, 0.1f,new Vector2(perso.getBounds().width/2,0), 0);
 		physique = BodyFactory.physicalProperties(primitive, true, 0, 0, 0);
-		body.createFixture(physique).setUserData("pied");//Permet de savoir si le personange touche le sol ou pas
+		if(joueur == 1){
+			body.createFixture(physique).setUserData("pied1");//Permet de savoir si le personange touche le sol ou pas
+		}
+		else{
+			body.createFixture(physique).setUserData("pied2");
+		}
 		body.setFixedRotation(true); //Empeche le carre de glisser et de tomber
 		
 		//HitBox

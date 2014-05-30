@@ -54,6 +54,7 @@ public class LevelManager {
 
 		//Mise en place des diff��rents block
 
+		
 
 		//Block statique
 		layer = (TiledMapTileLayer) tileMap.getLayers().get("statique");

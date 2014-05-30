@@ -3,11 +3,7 @@ package com.PolyHogg.model;
 import com.PolyHogg.utils.BodyFactory;
 import com.PolyHogg.utils.Constants;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -43,6 +39,9 @@ public class Player {
 	private Body player;
 	private boolean	life = true;
 	private boolean	finish = false;
+	private boolean	sprite = true;
+	private boolean 	attack =false;
+	private long		begin_attack;
 	
 	private boolean personnageRouge;
 	
@@ -66,12 +65,29 @@ public class Player {
 	
 	
 	public void update(OrthographicCamera camera,float delta){
-		SpriteBatch batch;
-		batch = new SpriteBatch();
-		batch.setProjectionMatrix(camera.combined);
-		batch.begin();
-		batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
-		batch.end();
+		if(sprite){
+			SpriteBatch batch;
+			batch = new SpriteBatch();
+			batch.setProjectionMatrix(camera.combined);
+			batch.begin();
+			batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
+			batch.end();
+		}
+	}
+	
+	public boolean getAttack(){
+		return attack;
+	}
+	
+	public void setAttack(boolean attack){
+		this.attack = attack;
+		if(attack){
+			this.begin_attack = System.currentTimeMillis();
+		}
+	}
+	
+	public long getCurrentTime(){
+		return begin_attack;
 	}
 	
 	public boolean getFinish(){
@@ -82,8 +98,15 @@ public class Player {
 		this.finish = finish;
 	}
 	
+	public boolean getLife(){
+		return life;
+	}
+	
 	public void setLife(boolean life){
 		this.life = life;
+		if(!life){
+			sprite = false;
+		}
 	}
 	
 	public int getGarde(){
@@ -104,6 +127,9 @@ public class Player {
 	
 	public Body getPlayer(){
 		return player;
+	}
+	public void setPlayer(Body player){
+		this.player = player;
 	}
 
 	public Rectangle getBounds() {
