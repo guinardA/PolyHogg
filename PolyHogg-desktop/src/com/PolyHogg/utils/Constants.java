@@ -9,7 +9,7 @@ public class Constants {
 	public static float SIZE_BLOCK = 1f;
 	public static float SIZE_PERSO = 0.9f;
 	
-	public static int GRAVITY = 0;
+	public static float GRAVITY = -19.81f;
 	public static int NB_GRENADES = 26;
 	public static int MAX_SCORE = 10;
 	public static int GAME_DURATION = 0;

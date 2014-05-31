@@ -71,7 +71,7 @@ public class GameScreen extends PolyHogScreen{
 			this.camera.update();
 			
 			//Chargement du niveau dans le world
-			world = new World(new Vector2(0, -19.81f), true);//Cr��ation d'un monde avec un gravit�� a 9.81
+			world = new World(new Vector2(0, Constants.GRAVITY), true);//Cr��ation d'un monde avec un gravit�� a 9.81
 			
 			//Chargement du level
 			levelManager = new LevelManager(world, "map");
