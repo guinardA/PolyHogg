@@ -48,8 +48,8 @@ public class ParametreScreen extends PolyMenu{
 		
 		Gdx.input.setInputProcessor(stage);
 		
-		atlas = new TextureAtlas("ui/atlas.pack");
-		skin = new Skin(Gdx.files.internal("ui/menuStyle.json"),atlas);
+		atlas = new TextureAtlas("res/ui/atlas.pack");
+		skin = new Skin(Gdx.files.internal("res/ui/menuStyle.json"),atlas);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
@@ -63,7 +63,7 @@ public class ParametreScreen extends PolyMenu{
 		difficutlyText = new Label("Difficulté", skin);
 		
 		TextFieldStyle fieldStyle = new TextFieldStyle();
-		fieldStyle.font = new BitmapFont(Gdx.files.internal("font/white.fnt"));
+		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
 		fieldStyle.fontColor = new Color(1, 1, 1, 1);
 		
 		gravityField = new TextField(Integer.toString(Constants.GRAVITY), fieldStyle);

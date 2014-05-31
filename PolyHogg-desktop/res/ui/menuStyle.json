@@ -8,10 +8,10 @@
 	},
 	
 	"com.badlogic.gdx.graphics.g2d.BitmapFont": {
-		"white64": { "file": "font/white.fnt" },
-		"black64": { "file": "font/black.fnt" },
-		"black32": { "file": "font/blacksmall.fnt" },
-		"white32": { "file": "font/whitesmall.fnt" }
+		"white64": { "file": "res/font/white.fnt" },
+		"black64": { "file": "res/font/black.fnt" },
+		"black32": { "file": "res/font/blacksmall.fnt" },
+		"white32": { "file": "res/font/whitesmall.fnt" }
 	},
 	"com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
 		"default": { "font": white64, "fontColor": white },
