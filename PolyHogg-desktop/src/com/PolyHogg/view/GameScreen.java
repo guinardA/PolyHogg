@@ -140,7 +140,6 @@ public class GameScreen extends PolyHogScreen{
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
-<<<<<<< HEAD
 				if(levelManager.getLevel() != 1){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()-1);
@@ -151,20 +150,13 @@ public class GameScreen extends PolyHogScreen{
 				else{
 					//Monde terminé
 				}
-=======
-				world.setContactListener(null);
-				levelManager.setLevel(levelManager.getLevel()-1);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
->>>>>>> a1c606e0264e45529b90ffa92e883f45b9b90dd7
 			}
 			
 			else if(!player2.getLife()){
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
-<<<<<<< HEAD
+
 				if(levelManager.getLevel() != 8){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()+1);
@@ -175,13 +167,6 @@ public class GameScreen extends PolyHogScreen{
 				else{
 					//Monde terminé
 				}
-=======
-				world.setContactListener(null);
-				levelManager.setLevel(levelManager.getLevel()+1);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
->>>>>>> a1c606e0264e45529b90ffa92e883f45b9b90dd7
 			}
 			
 			//Temps d'attaque 1sec

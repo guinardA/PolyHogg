@@ -20,7 +20,8 @@ public class ParametreScreen extends PolyMenu{
 	private Stage stage;
 	private Skin skin;
 	private Table table;
-	private Label heading, gravityText, grenadesText, durationText, scoreText, difficutlyText;
+	private Label gravityText, grenadesText, durationText, scoreText, difficutlyText;
+	public Label heading;
 	private TextureAtlas atlas;
 	public TextButton buttonOk, buttonCancel;
 	public TextField gravityField, grenadesField, durationField, scoreField, difficultyField;
@@ -65,8 +66,7 @@ public class ParametreScreen extends PolyMenu{
 		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
 		fieldStyle.fontColor = new Color(1, 1, 1, 1);
 		
-		gravityField = new TextField(Integer.toString(Constants.GRAVITY), fieldStyle);
-		gravityField.setFocusTraversal(true);
+		gravityField = new TextField(Float.toString(Constants.GRAVITY), fieldStyle);
 		grenadesField = new TextField(Integer.toString(Constants.NB_GRENADES), fieldStyle);
 		durationField = new TextField(Integer.toString(Constants.GAME_DURATION), fieldStyle);
 		scoreField = new TextField(Integer.toString(Constants.MAX_SCORE), fieldStyle);
@@ -85,6 +85,7 @@ public class ParametreScreen extends PolyMenu{
 		table.getCell(heading).spaceBottom(10);
 		table.add(gravityText);
 		table.add(gravityField).center().row();
+		table.getCell(gravityField).fill();
 		table.add(grenadesText);
 		table.add(grenadesField).center().row();
 		table.add(durationText);

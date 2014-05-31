@@ -62,8 +62,8 @@ public class MenuListener extends ClickListener {
 
 		if (polymenu instanceof ParametreScreen) {	//PARAMETRESCREEN
 			if (event.getListenerActor() == ((ParametreScreen) polymenu).buttonOk) {
-				Constants.GRAVITY = Integer
-						.parseInt(((ParametreScreen) polymenu).gravityField
+				Constants.GRAVITY = Float
+						.parseFloat(((ParametreScreen) polymenu).gravityField
 								.getText());
 				Constants.NB_GRENADES = Integer
 						.parseInt(((ParametreScreen) polymenu).grenadesField
@@ -90,28 +90,34 @@ public class MenuListener extends ClickListener {
 
 		if (polymenu instanceof CustomPlayScreen) {	//CUSTOMPLAYSCREEN
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonOk) {
-				Constants.GRAVITY = Integer
-						.parseInt(((CustomPlayScreen) polymenu).gravityField
-								.getText());
-				Constants.NB_GRENADES = Integer
-						.parseInt(((CustomPlayScreen) polymenu).grenadesField
-								.getText());
-				Constants.MAX_SCORE = Integer
-						.parseInt(((CustomPlayScreen) polymenu).scoreField
-								.getText());
-				Constants.GAME_DURATION = Integer
-						.parseInt(((CustomPlayScreen) polymenu).durationField
-								.getText());
-				Constants.DIFFICULTY = Integer
-						.parseInt(((CustomPlayScreen) polymenu).difficultyField
-								.getText());
-				((Game) Gdx.app.getApplicationListener())
-						.setScreen(new GameScreen());
-			}
+				if((Float.parseFloat(((CustomPlayScreen) polymenu).gravityField.getText()) < 0)){
+					Constants.GRAVITY = Float
+							.parseFloat(((CustomPlayScreen) polymenu).gravityField
+									.getText());
+					Constants.NB_GRENADES = Integer
+							.parseInt(((CustomPlayScreen) polymenu).grenadesField
+									.getText());
+					Constants.MAX_SCORE = Integer
+							.parseInt(((CustomPlayScreen) polymenu).scoreField
+									.getText());
+					Constants.GAME_DURATION = Integer
+							.parseInt(((CustomPlayScreen) polymenu).durationField
+									.getText());
+					Constants.DIFFICULTY = Integer
+							.parseInt(((CustomPlayScreen) polymenu).difficultyField
+									.getText());
+					((Game) Gdx.app.getApplicationListener())
+							.setScreen(new GameScreen());
+				}
+				else{
+					((CustomPlayScreen) polymenu).heading.setText("Probleme");
+				}
+		}
 
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonBack) {
 				((Game) Gdx.app.getApplicationListener())
 						.setScreen(new PlayScreen());
+				
 			}
 		}
 		

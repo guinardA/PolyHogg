@@ -21,7 +21,8 @@ public class CustomPlayScreen extends PolyMenu{
 	private Stage stage;
 	private Skin skin;
 	private Table table;
-	private Label heading, gravityText, grenadesText, durationText, scoreText, difficutlyText;
+	private Label gravityText, grenadesText, durationText, scoreText, difficutlyText;
+	public Label heading;
 	private TextureAtlas atlas;
 	public TextButton buttonOk, buttonBack;
 	public TextField gravityField, grenadesField, durationField, scoreField, difficultyField;
@@ -65,7 +66,7 @@ public class CustomPlayScreen extends PolyMenu{
 		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
 		fieldStyle.fontColor = new Color(1, 1, 1, 1);
 		
-		gravityField = new TextField(Integer.toString(Constants.GRAVITY), fieldStyle);
+		gravityField = new TextField(Float.toString(Constants.GRAVITY), fieldStyle);
 		gravityField.setFocusTraversal(true);
 		grenadesField = new TextField(Integer.toString(Constants.NB_GRENADES), fieldStyle);
 		durationField = new TextField(Integer.toString(Constants.GAME_DURATION), fieldStyle);
@@ -83,7 +84,7 @@ public class CustomPlayScreen extends PolyMenu{
 		table.add(heading).colspan(2).center().row();
 		table.getCell(heading).spaceBottom(10);
 		table.add(gravityText);
-		table.add(gravityField).center().row();
+		table.add(gravityField).center().fill().row();
 		table.add(grenadesText);
 		table.add(grenadesField).center().row();
 		table.add(durationText);

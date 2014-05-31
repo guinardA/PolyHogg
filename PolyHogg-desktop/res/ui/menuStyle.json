@@ -28,5 +28,9 @@
 	
 	"com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
 		"default": { "hScrollKnob": "button.up", "vScrollKnob": "button.up"}
+	},
+	
+	"com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
+		"default": { "titleFont": white64 }
 	}
 }
