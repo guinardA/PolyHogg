@@ -89,7 +89,6 @@ public class GameScreen extends PolyHogScreen{
 		    Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 			//SPRITE
-			final InterLevelScreen ils = new InterLevelScreen("player");
 			OrthographicCamera camera2 = new OrthographicCamera();
 			
 			
