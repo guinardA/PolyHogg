@@ -56,11 +56,11 @@ public class ParametreScreen extends PolyMenu{
 		heading = new Label("Options", skin);
 		//heading.setFontScale((float) 1.5);
 		
-		gravityText = new Label("Gravité", skin);
+		gravityText = new Label("Gravite", skin);
 		grenadesText = new Label("Grenades", skin); 
-		durationText = new Label("Durée", skin);
+		durationText = new Label("Duree", skin);
 		scoreText = new Label("ScoreMax", skin);
-		difficutlyText = new Label("Difficulté", skin);
+		difficutlyText = new Label("Difficulte", skin);
 		
 		TextFieldStyle fieldStyle = new TextFieldStyle();
 		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));

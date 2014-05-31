@@ -17,7 +17,7 @@ import com.badlogic.gdx.physics.box2d.World;
 public class Player {
 
 	/*
-	 * IDLE : Lorsqu���il ne bouge ou saute pas ET est envie.
+	 * IDLE : Lorsquil ne bouge ou saute pas ET est envie.
 	 * WALKING : Deplacement de gauche ou droite a une vitesse constante.
 	 * JUMPING : Deplacement en hauteur de gauche ou droite.
 	 * DYING : Invisible et regeneration

@@ -52,14 +52,14 @@ public class CustomPlayScreen extends PolyMenu{
 		skin = new Skin(Gdx.files.internal("res/ui/menuStyle.json"),atlas);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+
+		heading = new Label("Partie personnalisee", skin);
 		
-		heading = new Label("Partie personnalisée", skin);
-		
-		gravityText = new Label("Gravité", skin);
+		gravityText = new Label("Gravite", skin);
 		grenadesText = new Label("Grenades", skin); 
-		durationText = new Label("Durée", skin);
+		durationText = new Label("Duree", skin);
 		scoreText = new Label("ScoreMax", skin);
-		difficutlyText = new Label("Difficulté", skin);
+		difficutlyText = new Label("Difficulte", skin);
 		
 		TextFieldStyle fieldStyle = new TextFieldStyle();
 		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
