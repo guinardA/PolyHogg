@@ -31,20 +31,46 @@ public class GameContactListener implements ContactListener{
 			//CONTACT AVEC LE SOL
 			if (userData != null && userData == "pied1" && userData2 != null && userData2 == "blocStatique") {
 				joueur1Terre = true;
+				player1.setSlow(false);
 			} else {
 				
 				if (userData2 != null && userData2 == "pied1" && userData != null && userData == "blocStatique") {
 					joueur1Terre = true;
+					player1.setSlow(false);
 				}
 			}
 			
-			//CONTACT AVEC LE SOL
 			if (userData != null && userData == "pied2" && userData2 != null && userData2 == "blocStatique") {
 				joueur2Terre = true;
+				player2.setSlow(false);
 			} else {
 				
 				if (userData2 != null && userData2 == "pied2" && userData != null && userData == "blocStatique") {
 					joueur2Terre = true;
+					player2.setSlow(false);
+				}
+			}
+			
+			//CONTACT AVEC UN BLOCK Ralentisseur
+			if (userData != null && userData == "pied1" && userData2 != null && userData2 == "blocRalentisseur") {
+				joueur1Terre = true;
+				player1.setSlow(true);
+			} else {
+				
+				if (userData2 != null && userData2 == "pied1" && userData != null && userData == "blocRalentisseur") {
+					joueur1Terre = true;
+					player1.setSlow(true);
+				}
+			}
+			
+			if (userData != null && userData == "pied2" && userData2 != null && userData2 == "blocRalentisseur") {
+				joueur2Terre = true;
+				player2.setSlow(true);
+			} else {
+				
+				if (userData2 != null && userData2 == "pied2" && userData != null && userData == "blocRalentisseur") {
+					joueur2Terre = true;
+					player2.setSlow(true);
 				}
 			}
 
@@ -110,15 +136,27 @@ public class GameContactListener implements ContactListener{
 			if(joueur == 1){
 				if(joueur1Terre){
 					player1.setState(State.JUMPING); // Passe a ete deplacement
-					float impulse = player1.getPlayer().getMass() * 10;//Impulsion au joueur
+					float impulse;
+					if(!player1.getSlow()){
+						impulse = player1.getPlayer().getMass() * 10;//Impulsion au joueur
+					}
+					else{
+						impulse = player1.getPlayer().getMass() * 5;//Impulsion au joueur
+					}
 					 player1.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player1.getPlayer().getWorldCenter(), true);
 				}
 			}
 			else{
 				if(joueur2Terre){
 					player2.setState(State.JUMPING); // Passe a ete deplacement
-					float impulse = player2.getPlayer().getMass() * 10;//Impulsion au joueur
-					 player2.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player2.getPlayer().getWorldCenter(), true);
+					float impulse;
+					if(!player1.getSlow()){
+						impulse = player2.getPlayer().getMass() * 10;//Impulsion au joueur
+					}
+					else{
+						impulse = player2.getPlayer().getMass() * 5;//Impulsion au joueur
+					}
+					player2.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player2.getPlayer().getWorldCenter(), true);
 				}
 			}
 		}
@@ -126,26 +164,9 @@ public class GameContactListener implements ContactListener{
 		public void attack(){
 			
 			//Cas ou l'un des joueurs est en attack
-			//Temps d'attaque 1sec
-			boolean attack1 = false;
-			boolean attack2 = false;
-			
-			if(player1.getAttack()){
-				if((System.currentTimeMillis() - player1.getCurrentTime()) < 60){
-					attack1 = true;
-				}
-				else {
-					attack1 = false;
-				}
-			}
-			if(player2.getAttack()){
-				if((System.currentTimeMillis() - player2.getCurrentTime()) < 60){
-					attack2 = true;
-				}
-				else {
-					attack2 = false;
-				}
-			}
+
+			boolean attack1 = player1.getAttack();
+			boolean attack2 = player2.getAttack();
 			
 			if(attack1 == true && attack2 == false && player1.getGarde() != player2.getGarde()){
 				player2.setLife(false);

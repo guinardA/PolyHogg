@@ -15,6 +15,8 @@ public class PersonnageListener implements  InputProcessor{
 	private Player player1;
 	private Player player2;
 	private GameContactListener contact;
+	private boolean attackPressedJ1;
+	private boolean attackPressedJ2;
 	
 
 	public PersonnageListener(Player player1, Player player2, GameContactListener contact) {
@@ -28,13 +30,23 @@ public class PersonnageListener implements  InputProcessor{
 	public boolean keyDown(int keycode) {
 		//Touche du joueur 1
 		if (keycode == Keys.LEFT){
-			player1.getPlayer().setLinearVelocity(-4,0);
+			if(!player1.getSlow()){
+				player1.getPlayer().setLinearVelocity(-4,0);
+			}
+			else{
+				player1.getPlayer().setLinearVelocity(-2,0);
+			}
 			player1.setState(State.WALKING);
 			player1.setFacingLeft(true);
 		}
 
 		if (keycode == Keys.RIGHT){
-			player1.getPlayer().setLinearVelocity(4,0);
+			if(!player1.getSlow()){
+				player1.getPlayer().setLinearVelocity(4,0);
+			}
+			else{
+				player1.getPlayer().setLinearVelocity(2,0);
+			}
 			player1.setState(State.WALKING);
 			player1.setFacingLeft(false);
 		}
@@ -50,14 +62,31 @@ public class PersonnageListener implements  InputProcessor{
 			contact.jump(1);
 		}
 		
+		if(keycode == Keys.CONTROL_RIGHT){
+			if(attackPressedJ1){
+				player1.setAttack(true);
+				attackPressedJ1 = false;
+			}
+		}
+		
 		//Touche du joueur 2
 		if (keycode == Keys.Q){
-			player2.getPlayer().setLinearVelocity(-4,0);
+			if(!player2.getSlow()){
+				player2.getPlayer().setLinearVelocity(-4,0);
+			}
+			else{
+				player2.getPlayer().setLinearVelocity(-2,0);
+			}
 			player2.setState(State.WALKING);
 			player2.setFacingLeft(true);
 		}
 		if (keycode == Keys.D){
-			player2.getPlayer().setLinearVelocity(4,0);
+			if(!player2.getSlow()){
+				player2.getPlayer().setLinearVelocity(4,0);
+			}
+			else{
+				player2.getPlayer().setLinearVelocity(2,0);
+			}
 			player2.setState(State.WALKING);
 			player2.setFacingLeft(false);
 		}
@@ -70,6 +99,13 @@ public class PersonnageListener implements  InputProcessor{
 		if (keycode == Keys.SPACE){
 			contact.jump(2);
 		}
+		if(keycode == Keys.SHIFT_LEFT){
+			if(attackPressedJ2){
+				player2.setAttack(true);
+				attackPressedJ2 = false;
+			}
+		}
+		
 		return true;
 	}
 
@@ -93,6 +129,12 @@ public class PersonnageListener implements  InputProcessor{
 			player2.getPlayer().setLinearVelocity(0,0);
 			player2.setState(State.IDLE);
 		}
+		if(keycode == Keys.CONTROL_RIGHT){
+				attackPressedJ1 = true;
+		}
+		if(keycode == Keys.SHIFT_LEFT){
+			attackPressedJ2 = true;
+	}
 		return true;
 	}
 

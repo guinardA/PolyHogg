@@ -100,23 +100,31 @@ public class GameScreen extends PolyHogScreen{
 			mondeSprite.render();
 			
 			if(player1.getFinish()){
-				player1.setFinish(false);
-				levelManager.setLevel(levelManager.getLevel()+1);
-				world.setContactListener(null);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
+				if(levelManager.getLevel() != 8){
+					player1.setFinish(false);
+					levelManager.setLevel(levelManager.getLevel()+1);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
+					this.loadWorld();}
+				else{
+					//Monde terminé
+				}
 			}
 			
 			else if(player2.getFinish()){
-				player2.setFinish(false);
-				levelManager.setLevel(levelManager.getLevel()-1);
-				world.setContactListener(null);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
+				if(levelManager.getLevel() != 1){
+					player2.setFinish(false);
+					levelManager.setLevel(levelManager.getLevel()-1);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
+					this.loadWorld();
+				}
+				else{
+					//Monde terminé
+				}
 			}
-			
 			//Cas ou les 2 joueurs tombe dans le vide
 			if(player1.getPlayer().getPosition().y < 0 && player2.getPlayer().getPosition().y <0){
 				world.setContactListener(null);
@@ -130,27 +138,48 @@ public class GameScreen extends PolyHogScreen{
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
-				
-				world.setContactListener(null);
-				levelManager.setLevel(levelManager.getLevel()-1);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
+				if(levelManager.getLevel() != 1){
+					world.setContactListener(null);
+					levelManager.setLevel(levelManager.getLevel()-1);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
+					this.loadWorld();
+				}
+				else{
+					//Monde terminé
+				}
 			}
 			
 			else if(!player2.getLife()){
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
-				
-				world.setContactListener(null);
-				levelManager.setLevel(levelManager.getLevel()+1);
-				levelManager.clearWorld();
-				mondeSprite = levelManager.createWorld();
-				this.loadWorld();
+				if(levelManager.getLevel() != 8){
+					world.setContactListener(null);
+					levelManager.setLevel(levelManager.getLevel()+1);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
+					this.loadWorld();
+				}
+				else{
+					//Monde terminé
+				}
 			}
 			
-			//A CHANGER AVEC ANIMATION
+			//Temps d'attaque 1sec
+			if(player1.getAttack()){
+				if((System.currentTimeMillis() - player1.getCurrentTime()) > 1000){
+					player1.setAttack(false);
+				}
+			}
+			
+			if(player2.getAttack()){
+				if((System.currentTimeMillis() - player2.getCurrentTime()) > 1000){
+					player2.setAttack(false);
+				}
+			}
+			
+			
 			player1.update(camera,delta);
 			player2.update(camera,delta);
 			
