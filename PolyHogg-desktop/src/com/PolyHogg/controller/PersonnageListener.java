@@ -47,7 +47,7 @@ public class PersonnageListener implements  InputProcessor{
 		}
 
 		if (keycode == Keys.SHIFT_RIGHT){
-			contact.jump();
+			contact.jump(1);
 		}
 		
 		//Touche du joueur 2
@@ -66,6 +66,9 @@ public class PersonnageListener implements  InputProcessor{
 		}
 		if (keycode == Keys.S){
 			player2.downGarde();
+		}
+		if (keycode == Keys.SPACE){
+			contact.jump(2);
 		}
 		return true;
 	}

@@ -3,114 +3,268 @@ textures.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-rouge-01
+rouge-01B
   rotate: false
-  xy: 2, 2
+  xy: 104, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-01H
+  rotate: false
+  xy: 104, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-01M
+  rotate: false
+  xy: 134, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-02B
+  rotate: false
+  xy: 374, 32
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
-rouge-02
+rouge-02H
   rotate: false
-  xy: 28, 2
+  xy: 374, 2
+  size: 24, 28
+  orig: 24, 28
+  offset: 0, 0
+  index: -1
+rouge-02M
+  rotate: false
+  xy: 400, 32
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
 rouge-03
   rotate: false
-  xy: 314, 4
+  xy: 504, 34
   size: 24, 26
   orig: 24, 26
   offset: 0, 0
   index: -1
 rouge-04
   rotate: false
-  xy: 340, 4
+  xy: 504, 6
   size: 24, 26
   orig: 24, 26
   offset: 0, 0
   index: -1
-rouge-05
+rouge-05B
   rotate: false
-  xy: 54, 2
-  size: 24, 28
-  orig: 24, 28
+  xy: 134, 2
+  size: 28, 28
+  orig: 28, 28
   offset: 0, 0
   index: -1
-rouge-06
+rouge-05H
   rotate: false
-  xy: 80, 2
-  size: 24, 28
-  orig: 24, 28
+  xy: 164, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-05M
+  rotate: false
+  xy: 164, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-06B
+  rotate: false
+  xy: 194, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-06H
+  rotate: false
+  xy: 194, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-06M
+  rotate: false
+  xy: 224, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+rouge-atckB
+  rotate: false
+  xy: 2, 32
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+rouge-atckH
+  rotate: false
+  xy: 2, 2
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+rouge-atckM
+  rotate: false
+  xy: 36, 32
+  size: 32, 28
+  orig: 32, 28
   offset: 0, 0
   index: -1
 rouge-down
   rotate: false
-  xy: 106, 2
+  xy: 400, 2
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
 rouge-up
   rotate: false
-  xy: 132, 2
+  xy: 426, 32
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
-vert-01
+vert-01B
   rotate: false
-  xy: 158, 2
+  xy: 224, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-01H
+  rotate: false
+  xy: 254, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-01M
+  rotate: false
+  xy: 254, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-02B
+  rotate: false
+  xy: 426, 2
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
-vert-02
+vert-02H
   rotate: false
-  xy: 184, 2
+  xy: 452, 32
+  size: 24, 28
+  orig: 24, 28
+  offset: 0, 0
+  index: -1
+vert-02M
+  rotate: false
+  xy: 452, 2
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
 vert-03
   rotate: false
-  xy: 366, 4
+  xy: 530, 34
   size: 24, 26
   orig: 24, 26
   offset: 0, 0
   index: -1
 vert-04
   rotate: false
-  xy: 392, 4
+  xy: 530, 6
   size: 24, 26
   orig: 24, 26
   offset: 0, 0
   index: -1
-vert-05
+vert-05B
   rotate: false
-  xy: 210, 2
-  size: 24, 28
-  orig: 24, 28
+  xy: 284, 32
+  size: 28, 28
+  orig: 28, 28
   offset: 0, 0
   index: -1
-vert-06
+vert-05H
   rotate: false
-  xy: 236, 2
-  size: 24, 28
-  orig: 24, 28
+  xy: 284, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-05M
+  rotate: false
+  xy: 314, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-06B
+  rotate: false
+  xy: 314, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-06H
+  rotate: false
+  xy: 344, 32
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-06M
+  rotate: false
+  xy: 344, 2
+  size: 28, 28
+  orig: 28, 28
+  offset: 0, 0
+  index: -1
+vert-atckB
+  rotate: false
+  xy: 36, 2
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+vert-atckH
+  rotate: false
+  xy: 70, 32
+  size: 32, 28
+  orig: 32, 28
+  offset: 0, 0
+  index: -1
+vert-atckM
+  rotate: false
+  xy: 70, 2
+  size: 32, 28
+  orig: 32, 28
   offset: 0, 0
   index: -1
 vert-down
   rotate: false
-  xy: 262, 2
+  xy: 478, 32
   size: 24, 28
   orig: 24, 28
   offset: 0, 0
   index: -1
 vert-up
   rotate: false
-  xy: 288, 2
+  xy: 478, 2
   size: 24, 28
   orig: 24, 28
   offset: 0, 0

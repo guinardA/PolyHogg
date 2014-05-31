@@ -10,7 +10,9 @@ import com.badlogic.gdx.physics.box2d.Manifold;
 
 public class GameContactListener implements ContactListener{
 	
-	private boolean joueurTerre = true;
+	private boolean joueur1Terre = true;
+	private boolean joueur2Terre = true;
+	
 	private Player player1;
 	private Player player2;
 	
@@ -27,12 +29,22 @@ public class GameContactListener implements ContactListener{
 			Object userData2 = contact.getFixtureB().getUserData();
 
 			//CONTACT AVEC LE SOL
-			if (userData != null && userData == "pied" && userData2 != null && userData2 == "blocStatique") {
-				joueurTerre = true;
+			if (userData != null && userData == "pied1" && userData2 != null && userData2 == "blocStatique") {
+				joueur1Terre = true;
 			} else {
 				
-				if (userData2 != null && userData2 == "pied" && userData != null && userData == "blocStatique") {
-					joueurTerre = true;
+				if (userData2 != null && userData2 == "pied1" && userData != null && userData == "blocStatique") {
+					joueur1Terre = true;
+				}
+			}
+			
+			//CONTACT AVEC LE SOL
+			if (userData != null && userData == "pied2" && userData2 != null && userData2 == "blocStatique") {
+				joueur2Terre = true;
+			} else {
+				
+				if (userData2 != null && userData2 == "pied2" && userData != null && userData == "blocStatique") {
+					joueur2Terre = true;
 				}
 			}
 
@@ -60,12 +72,21 @@ public class GameContactListener implements ContactListener{
 			Object userData2 = contact.getFixtureB().getUserData();
 
 			//On verifie que le personnage ne touche pas le sol pour qu'il ne puisse pas sauter
-			if (userData != null && userData == "pied" && userData2 != null && userData2 == "blocStatique") {
-				joueurTerre = false;
+			if (userData != null && userData == "pied1" && userData2 != null && userData2 == "blocStatique") {
+				joueur1Terre = false;
 			} else {
 				
-				if (userData2 != null && userData2 == "pied" && userData != null && userData == "blocStatique") {
-					joueurTerre = false;
+				if (userData2 != null && userData2 == "pied1" && userData != null && userData == "blocStatique") {
+					joueur1Terre = false;
+				}
+			}
+			
+			if (userData != null && userData == "pied2" && userData2 != null && userData2 == "blocStatique") {
+				joueur2Terre = false;
+			} else {
+				
+				if (userData2 != null && userData2 == "pied2" && userData != null && userData == "blocStatique") {
+					joueur2Terre = false;
 				}
 			}
 		}
@@ -84,23 +105,67 @@ public class GameContactListener implements ContactListener{
 		}
 
 		//Fonction qui permet le saut du personnage pour le personnage 1
-		public void jump(){
+		public void jump(int joueur){
 
-			if(joueurTerre){
-				player1.setState(State.JUMPING); // Passe a ete deplacement
-				float impulse = player1.getPlayer().getMass() * 10;//Impulsion au joueur
-				 player1.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player1.getPlayer().getWorldCenter(), true);
+			if(joueur == 1){
+				if(joueur1Terre){
+					player1.setState(State.JUMPING); // Passe a ete deplacement
+					float impulse = player1.getPlayer().getMass() * 10;//Impulsion au joueur
+					 player1.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player1.getPlayer().getWorldCenter(), true);
+				}
+			}
+			else{
+				if(joueur2Terre){
+					player2.setState(State.JUMPING); // Passe a ete deplacement
+					float impulse = player2.getPlayer().getMass() * 10;//Impulsion au joueur
+					 player2.getPlayer().applyLinearImpulse(new Vector2(0, impulse), player2.getPlayer().getWorldCenter(), true);
+				}
 			}
 		}
 		
 		public void attack(){
-			if(player1.getGarde() == player2.getGarde()){
-				System.out.println("Match nul");
+			
+			//Cas ou l'un des joueurs est en attack
+			//Temps d'attaque 1sec
+			boolean attack1 = false;
+			boolean attack2 = false;
+			
+			if(player1.getAttack()){
+				if((System.currentTimeMillis() - player1.getCurrentTime()) < 60){
+					attack1 = true;
+				}
+				else {
+					attack1 = false;
+				}
+			}
+			if(player2.getAttack()){
+				if((System.currentTimeMillis() - player2.getCurrentTime()) < 60){
+					attack2 = true;
+				}
+				else {
+					attack2 = false;
+				}
+			}
+			
+			if(attack1 == true && attack2 == false && player1.getGarde() != player2.getGarde()){
+				player2.setLife(false);
+				System.out.println("Joueur 1 gagne");
+			}
+			
+			else if(attack1 == false && attack2 == true && player1.getGarde() != player2.getGarde()){
+				player1.setLife(false);
+				System.out.println("Joueur 2 gagne");
+			}
+			
+			else if(player1.getGarde() == player2.getGarde()){
+				System.out.println("Match nul");	
 			}
 			else if(player1.getGarde() < player2.getGarde()){
+				player2.setLife(false);
 				System.out.println("Joueur 1 gagne");
 			}
 			else if(player2.getGarde() < player1.getGarde()){
+				player1.setLife(false);
 				System.out.println("Joueur 2 gagne");
 			}
 		}

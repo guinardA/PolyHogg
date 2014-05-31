@@ -2,10 +2,6 @@ package com.PolyHogg.view;
 
 public class PolyMenu extends PolyHogScreen{
 
-	/*
-	 * CLASSE A INSTANCIER
-	 */
-	
 	@Override
 	public void render(float delta) {
 		// TODO Auto-generated method stub
@@ -48,4 +44,9 @@ public class PolyMenu extends PolyHogScreen{
 		
 	}
 
+	/*
+	 * CLASSE A INSTANCIER
+	 */
+	
+	
 }

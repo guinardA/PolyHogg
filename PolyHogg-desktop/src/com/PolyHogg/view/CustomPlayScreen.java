@@ -6,7 +6,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -15,15 +14,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField.TextFieldStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
 
-public class ParametreScreen extends PolyMenu{
+public class CustomPlayScreen extends PolyMenu{
 
 	private Stage stage;
 	private Skin skin;
 	private Table table;
 	private Label heading, gravityText, grenadesText, durationText, scoreText, difficutlyText;
 	private TextureAtlas atlas;
-	public TextButton buttonOk, buttonCancel;
+	public TextButton buttonOk, buttonBack;
 	public TextField gravityField, grenadesField, durationField, scoreField, difficultyField;
 	
 	@Override
@@ -53,8 +53,7 @@ public class ParametreScreen extends PolyMenu{
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
-		heading = new Label("Options", skin);
-		//heading.setFontScale((float) 1.5);
+		heading = new Label("Partie personnalisee", skin);
 		
 		gravityText = new Label("Gravite", skin);
 		grenadesText = new Label("Grenades", skin); 
@@ -74,13 +73,12 @@ public class ParametreScreen extends PolyMenu{
 		difficultyField = new TextField(Integer.toString(Constants.DIFFICULTY), fieldStyle);
 		
 		buttonOk = new TextButton("Valider", skin);
-		buttonCancel = new TextButton("Annuler", skin);
+		buttonBack = new TextButton("Retour", skin);
 		buttonOk.pad(10);
-		buttonCancel.pad(10);
+		buttonBack.pad(10);
 		
 		buttonOk.addListener(new MenuListener(this));
-		buttonCancel.addListener(new MenuListener(this));
-
+		buttonBack.addListener(new MenuListener(this));
 		
 		table.add(heading).colspan(2).center().row();
 		table.getCell(heading).spaceBottom(10);
@@ -95,10 +93,7 @@ public class ParametreScreen extends PolyMenu{
 		table.add(difficutlyText);
 		table.add(difficultyField).center().row();
 		table.add(buttonOk);
-		table.add(buttonCancel);
-		table.getCell(buttonOk).spaceBottom(10);
-		table.getCell(buttonCancel).spaceBottom(10);
-		
+		table.add(buttonBack);
 		
 		table.debug();
 		stage.addActor(table);
