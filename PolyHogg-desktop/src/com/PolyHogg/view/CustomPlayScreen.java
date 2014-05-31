@@ -95,7 +95,7 @@ public class CustomPlayScreen extends PolyMenu{
 		table.add(buttonOk);
 		table.add(buttonBack);
 		
-		table.debug();
+		//table.debug();
 		stage.addActor(table);
 		
 	}

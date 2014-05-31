@@ -1,7 +1,5 @@
 package com.PolyHogg.view;
 
-import java.sql.Time;
-
 import com.PolyHogg.controller.GameContactListener;
 import com.PolyHogg.controller.PersonnageListener;
 import com.PolyHogg.manager.LevelManager;
@@ -14,6 +12,9 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
+import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 
 
 /**
@@ -56,7 +57,8 @@ public class GameScreen extends PolyHogScreen{
 			//Quand la fenetre est en arri��re plan, on met le jeu en pause
 			debugRenderer.dispose();
 			world.dispose();
-			Gdx.input.setInputProcessor(null);	
+			Gdx.input.setInputProcessor(null);
+			mondeSprite.dispose();
 		}
 
 		//Fonction lanc�� pour affich�� ��cran et ensuite lance le render
@@ -87,7 +89,7 @@ public class GameScreen extends PolyHogScreen{
 		    Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 
 			//SPRITE
-			
+			final InterLevelScreen ils = new InterLevelScreen("player");
 			OrthographicCamera camera2 = new OrthographicCamera();
 			
 			
@@ -98,7 +100,7 @@ public class GameScreen extends PolyHogScreen{
 			
 			mondeSprite.setView(camera2);
 			mondeSprite.render();
-			
+
 			if(player1.getFinish()){
 				if(levelManager.getLevel() != 8){
 					player1.setFinish(false);
@@ -127,6 +129,7 @@ public class GameScreen extends PolyHogScreen{
 			}
 			//Cas ou les 2 joueurs tombe dans le vide
 			if(player1.getPlayer().getPosition().y < 0 && player2.getPlayer().getPosition().y <0){
+				
 				world.setContactListener(null);
 				levelManager.clearWorld();
 				mondeSprite = levelManager.createWorld();
@@ -138,6 +141,7 @@ public class GameScreen extends PolyHogScreen{
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
+<<<<<<< HEAD
 				if(levelManager.getLevel() != 1){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()-1);
@@ -148,12 +152,20 @@ public class GameScreen extends PolyHogScreen{
 				else{
 					//Monde terminé
 				}
+=======
+				world.setContactListener(null);
+				levelManager.setLevel(levelManager.getLevel()-1);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+>>>>>>> a1c606e0264e45529b90ffa92e883f45b9b90dd7
 			}
 			
 			else if(!player2.getLife()){
 				//Suppresion du personnage du decor mais erreur
 				//world.destroyBody(player1.getPlayer());
 				//player1.setLife(true);
+<<<<<<< HEAD
 				if(levelManager.getLevel() != 8){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()+1);
@@ -164,6 +176,13 @@ public class GameScreen extends PolyHogScreen{
 				else{
 					//Monde terminé
 				}
+=======
+				world.setContactListener(null);
+				levelManager.setLevel(levelManager.getLevel()+1);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+>>>>>>> a1c606e0264e45529b90ffa92e883f45b9b90dd7
 			}
 			
 			//Temps d'attaque 1sec

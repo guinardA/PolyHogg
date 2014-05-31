@@ -90,7 +90,23 @@ public class MenuListener extends ClickListener {
 
 		if (polymenu instanceof CustomPlayScreen) {	//CUSTOMPLAYSCREEN
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonOk) {
-				
+				Constants.GRAVITY = Integer
+						.parseInt(((CustomPlayScreen) polymenu).gravityField
+								.getText());
+				Constants.NB_GRENADES = Integer
+						.parseInt(((CustomPlayScreen) polymenu).grenadesField
+								.getText());
+				Constants.MAX_SCORE = Integer
+						.parseInt(((CustomPlayScreen) polymenu).scoreField
+								.getText());
+				Constants.GAME_DURATION = Integer
+						.parseInt(((CustomPlayScreen) polymenu).durationField
+								.getText());
+				Constants.DIFFICULTY = Integer
+						.parseInt(((CustomPlayScreen) polymenu).difficultyField
+								.getText());
+				((Game) Gdx.app.getApplicationListener())
+						.setScreen(new GameScreen());
 			}
 
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonBack) {
