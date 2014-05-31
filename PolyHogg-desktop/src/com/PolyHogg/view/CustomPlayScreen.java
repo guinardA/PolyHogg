@@ -52,7 +52,7 @@ public class CustomPlayScreen extends PolyMenu{
 		skin = new Skin(Gdx.files.internal("ui/menuStyle.json"),atlas);
 		table = new Table(skin);
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		
+
 		heading = new Label("Partie personnalisee", skin);
 		
 		gravityText = new Label("Gravite", skin);

@@ -12,6 +12,7 @@ public class PolyHogg extends Game {
     @Override
     public void create() {
     	setScreen(new GameScreen());//Implemente interface ecran de jeu (show() et hide())
+
     	//setScreen(new MenuScreen());
     }
  
