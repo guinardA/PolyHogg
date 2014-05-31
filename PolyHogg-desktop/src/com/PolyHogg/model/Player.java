@@ -42,6 +42,7 @@ public class Player {
 	private boolean	sprite = true;
 	private boolean 	attack =false;
 	private long		begin_attack;
+	private boolean	slow = false;
 	
 	private boolean personnageRouge;
 	
@@ -73,6 +74,14 @@ public class Player {
 			batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
 			batch.end();
 		}
+	}
+	
+	public boolean getSlow(){
+		return slow;
+	}
+	
+	public void setSlow(Boolean slow){
+		this.slow = slow;
 	}
 	
 	public boolean getAttack(){
