@@ -30,23 +30,35 @@ public class LevelManager {
 	float tileSize;
 	OrthogonalTiledMapRenderer tmr;
 	TiledMapTileLayer layer;
+	private int numMonde;
 
 	public LevelManager(World world, String dossier){
 		this.world = world;
 		level = 5; //Les niveaux de vont de 1 �� 9 et de gauche a droite
-		this.dossier = dossier;
+		this.dossier = dossier;;
+		numMonde =1;
 	}
 
 
 	public OrthogonalTiledMapRenderer createWorld(){
 
 		//Chargement du level
-		String url;
+		String url = null;
 		if(level > 5){
-			url = "res/"+dossier+"/level"+String.valueOf(5-(level-5))+".tmx";
+			if(numMonde == 1){
+				url = "res/map/sky/level"+String.valueOf(5-(level-5))+".tmx";
+			}
+			else if(numMonde == 2){
+				url = "res/map/gold/level"+String.valueOf(5-(level-5))+".tmx";
+			}
 		}
 		else{
-			url = "res/"+dossier+"/level"+String.valueOf(level)+".tmx";
+			if(numMonde == 1){
+				url = "res/map/sky/level"+String.valueOf(level)+".tmx";
+			}
+			else if(numMonde == 2){
+				url = "res/map/gold/level"+String.valueOf(level)+".tmx";
+			}
 		}
 		
 		tileMap = new TmxMapLoader().load(url);
@@ -162,13 +174,33 @@ public class LevelManager {
 		}
 		
 		//Mise en place des players
-		player1 = new Player(new Vector2(24, 2),true); //Position de d��part du personnage
-		player1.createCorps(world,1);
+		if(level != 1){
+			player1 = new Player(new Vector2(24, 2),true); //Position de d��part du personnage
+			player1.createCorps(world,1);
+		}
+		else{
+			player1 = new Player(new Vector2(24, -2),true); //Position de d��part du personnage
+			player1.createCorps(world,1);
+		}
 		
-		player2 = new Player(new Vector2(1, 2),false); //Position de d��part du personnage
-		player2.createCorps(world,2);
+		if(level != 9){
+			player2 = new Player(new Vector2(1, 2),false); //Position de d��part du personnage
+			player2.createCorps(world,2);
+		}
+		else{
+			player2 = new Player(new Vector2(1, -2),false); //Position de d��part du personnage
+			player2.createCorps(world,2);
+		}
 		
 		return tmr;
+	}
+	
+	public int getNumMonde(){
+		return numMonde;
+	}
+	
+	public void setNumMonde(int numMonde){
+		this.numMonde = numMonde;
 	}
 	
 	public Player getPlayer1(){
