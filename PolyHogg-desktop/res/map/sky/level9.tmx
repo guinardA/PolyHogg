@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_dungeon32" tilewidth="32" tileheight="32">
+  <image source="dg_dungeon32.gif" width="288" height="320"/>
+ </tileset>
+ <tileset firstgid="91" name="dg_extra132" tilewidth="32" tileheight="32">
+  <image source="dg_extra132.gif" width="288" height="512"/>
+ </tileset>
+ <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <tileset firstgid="352" name="clouds" tilewidth="32" tileheight="32">
+  <image source="clouds.png" width="672" height="420"/>
+ </tileset>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy9z2WPFWcYBuBzDlrcfSG4FHd3txBCoQIEEpbdhSDf+Dm4u7tTpLSlLe5OcXe/JmcmzG5YPnInV87zPjNzz5xE4vtlYjKRmM0c5jKP+SxgIYtYzBKWsozlrGAlq1jNGtayjvVhZ9AdZZZ5AxvZxGa2sJVtbGcHO9nFbvawl33s5wC/c5BDHI51RvnTfIQ/OJpMn//ib47xD//yH8c5wUlOcZoznOUc57nAxVhnlOvmS1zmCle5lkzvb3CTW/zPbe5wl3vc5wEPecRjnvA01hnltfkZz3nBS14l0/s3vOUd7/nARz4Fz6cSiSQpClCQQhSmSOpLZ5SSdkX5gWIUp0QqvS9FacpQlnKUpwIVqURlqlCValSnRqwzSh1zBjWpFaqdSu/rUo/6NKAhjWhME36kKc1oTgta0irWGaW/uTVtaEs72tOBjnSiM13oSje604Oe9KI3fehLv1Tuzii/mQcwkEEMZghDGcZwJpHJT4xmDKPynH/mF35N5e6MEtw7lnHhs8H18eH7JjAx3E9mStg9kqzwPDXP+wIzY51RcsJ7x4bfHPRlx3qzQsEuJ/Yb3wWmMZ0RzIh1fS3ZqS/i57zXol30DUGi/5qZT3c8Gcm0/M757b61D/IZD1+GuA==
+  </data>
+ </layer>
+ <layer name="pg" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6gpCBdsAQBQBsEABV
+  </data>
+ </layer>
+ <layer name="pd" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB2wZB9oF1AcAOQcAPw==
+  </data>
+ </layer>
+ <layer name="ralentisseur" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJztzbkNgDAQRNF1GRTlHqiH+76hIKriI0OABSFISB7pBTvBjhYRX4kECBEhRoIUGXIUKFGhRoMWHXoMGDFhxqLM350W4+24Hbfjdv6x81U8dXVmPdj3U3fX27+/2NkArj8mww==
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_dungeon32" tilewidth="32" tileheight="32">
+  <image source="dg_dungeon32.gif" width="288" height="320"/>
+ </tileset>
+ <tileset firstgid="91" name="dg_extra132" tilewidth="32" tileheight="32">
+  <image source="dg_extra132.gif" width="288" height="512"/>
+ </tileset>
+ <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <layer name="pg" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6gjsD7YAhCgAR3wDd
+  </data>
+ </layer>
+ <layer name="pd" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB+4MtANoAAC74ADd
+  </data>
+ </layer>
+ <layer name="dynamique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzFU4ENgCAM6yWcROJb/qJ3wFfGZCRlMgaYaJPGCFvbIQL/IwqDvG+KkL1ANbMIilmexYPXVr10X0uH/ayaGY83+SwceM4RUX8nJq+lQa9Smxp6zFPIGXr11rzenp4nOj27sQ7UZ5VR6+gs5d5xT0tzJHNQGpyl12v5WLN7Gbwz7/nc8O6E9tFY/Z9a2RLGtb7ABXSgI1Y=
+  </data>
+ </layer>
+ <layer name="ralentisseur" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AU0ANwMWJnj4LBA0DxMpjjBgBElAAt
+  </data>
+ </layer>
+ <layer name="decor2" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzFVDkOACAI4/8/VD/j4mAIrYBXkw5UaA2JNhFpnzlD15a2mxEB8qsGZ1i1t4cx2p+ZZXf0gGWVwVsogjPY2Y6f1pCPR7P0zM5OzGT2hTy1L+rJZLH5yJtgWPm8+is7AiSWCw==
+  </data>
+ </layer>
+ <layer name="pgf" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="pdf" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+</map>

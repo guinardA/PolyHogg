@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_dungeon32" tilewidth="32" tileheight="32">
+  <image source="dg_dungeon32.gif" width="288" height="320"/>
+ </tileset>
+ <tileset firstgid="91" name="dg_extra132" tilewidth="32" tileheight="32">
+  <image source="dg_extra132.gif" width="288" height="512"/>
+ </tileset>
+ <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <layer name="pg" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6AlvGgXbB0AQAUT8APw==
+  </data>
+ </layer>
+ <layer name="pd" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB4QG2gE0AAAUmAAT
+  </data>
+ </layer>
+ <layer name="dynamique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="ralentisseur" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRMBQAAAWwAAE=
+  </data>
+ </layer>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy7ycDAcJNOmNZg1J5Re0btGRr20AvcQsLY7L+FBePTi009CN9GwtjAbSwYmxw+9SAMAFYMRN0=
+  </data>
+ </layer>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJy9lNENwjAMRN1ByEB8IPhhHyTmYY9uRavG6vHqC3xh6eTUdnK2Ezfif3KeNlxkTcxxxGpvscPtdTyrJmbxKRe/q1yUR+0u/+Rkvvdej+aiceR5xa4J+p1OaA+UR+3XRd86tE7WzLpdryueUb/aIGbG+cqXwv0awzfizq18uS8lfS0+75E9SjQ5l/lU7508xGgmKm7Gk6eK4fv9ZR4dN+/H/QceC55d613QTltyUbJXXFM4f87m5DQdMYr7ZlN5A9k/fOI=
+  </data>
+ </layer>
+</map>

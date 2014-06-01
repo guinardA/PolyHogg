@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="26" height="14" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="dg_dungeon32" tilewidth="32" tileheight="32">
+  <image source="dg_dungeon32.gif" width="288" height="320"/>
+ </tileset>
+ <tileset firstgid="91" name="dg_extra132" tilewidth="32" tileheight="32">
+  <image source="dg_extra132.gif" width="288" height="512"/>
+ </tileset>
+ <tileset firstgid="235" name="dg_features32" tilewidth="32" tileheight="32">
+  <image source="dg_features32.gif" width="288" height="416"/>
+ </tileset>
+ <tileset firstgid="352" name="clouds" tilewidth="32" tileheight="32">
+  <image source="clouds.png" width="672" height="420"/>
+ </tileset>
+ <layer name="decor" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzdz0WPFUEYBdB+naAJrgkW3AluG9zd3RJk0GHHz8Hd3d11j1twEpzgcDrTnamBYcuCm5y829VVX/WLon+XWbkoWs4KVrKK1axhLetYzwY2sonNbGEr29jODnayi93pzGR2lmX6Hvayj/0c4CCHOMwRjnKM45zgJKc4zRnOco7zXAhmZrmiX+QSl3MFz1e5lvvzv/8t1+29wU1ucTuYmeWhfoe73OM+D4L3j/THPOEpz3jOC14G+17pr3nD22Bmlk/6O97zgY/Bu8/6F77yje/84GeyJ46iHHFcuL+EXpJSceHMLOWslaYMZeOi6+WpQEUqUZkqVKUa1alBzeBcLb12MDNLA70OdamXrtePC9Yb0ojGNKEpzWhOC1rSita0Sc+29dsumJmlv96eDnSkE53pQle60T3Yn6WHtZ70ojd96Eu/uOjMLFP0AQxkEIMZwlCGMZwRjGQUoxnDWMYxnglMZBKT46IzsyR7pzKN6cV8d5LkjjnMZR55qeKSb31pMDPLfH3hb3fNYCZLmJ3ekRfI7krOLkjPL2JxeiY/+K7/Mb8AeMls9A==
+  </data>
+ </layer>
+ <layer name="pg" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjAL6gtCBdsAQBQBtSABW
+  </data>
+ </layer>
+ <layer name="pd" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjILhB0IH2gE0AABMFABW
+  </data>
+ </layer>
+ <layer name="ralentisseur" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRAAJcjBA8WAEAE0IAFw==
+  </data>
+ </layer>
+ <layer name="statique" width="26" height="14">
+  <data encoding="base64" compression="zlib">
+   eJzN0dsNgzAMhWFnDIZiB+Ypt7bcL2UgpuqPEI8EJwiEpe/N9knkUEQiI/JCjAQpMuR444MvCpSoUKNBiw49Boz4YTLr3kUoq6vrSTmz0pkczQ5Nny1Hm6Hp38txzTias+X4lkuObYf29mdyfOvoPpq3a3rv+MtWgXHjO3eXP2n3Nws=
+  </data>
+ </layer>
+</map>
