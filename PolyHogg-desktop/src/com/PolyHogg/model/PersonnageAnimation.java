@@ -24,6 +24,14 @@ public class PersonnageAnimation {
 	private TextureRegion jumpRight;
 	private TextureRegion fallRight;
 	
+	//attaque
+	private TextureRegion attaqueLeftH;
+	private TextureRegion attaqueLeftM;
+	private TextureRegion attaqueLeftB;
+	private TextureRegion attaqueRightH;
+	private TextureRegion attaqueRightM;
+	private TextureRegion attaqueRightB;
+	
 	private TextureRegion frame;
 	
 	/** Animations **/
@@ -71,6 +79,15 @@ public class PersonnageAnimation {
 			frame = player.isFacingLeft() ? idleLeftM : idleRightM;
 		else 
 			frame = player.isFacingLeft() ? idleLeftH : idleRightH;
+
+		if( player.getAttack() ){
+			if( garde == 0 )
+				frame = player.isFacingLeft() ? attaqueLeftB : attaqueRightB ;
+			else if( garde == 1 )
+				frame = player.isFacingLeft() ? attaqueLeftM : attaqueRightM ;
+			else
+				frame = player.isFacingLeft() ? attaqueLeftH : attaqueRightH ;
+		}
 		
 		if(player.getState().equals(State.WALKING)) {
 			if( garde == 0 )
@@ -115,6 +132,11 @@ public class PersonnageAnimation {
 			walkRightFramesH[i].flip(true, false);
 		}
 		walkRightHAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFramesH);
+		
+		//attaque gauche haut
+		attaqueLeftH = atlas.findRegion(couleur+"-atckH");
+		attaqueRightH = new TextureRegion(attaqueLeftH);
+		attaqueRightH.flip(true, false);
 	}
 
 	private void initPositionMilieuFrames(TextureAtlas atlas,String couleur){
@@ -139,6 +161,11 @@ public class PersonnageAnimation {
 			walkRightFramesM[i].flip(true, false);
 		}
 		walkRightMAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFramesM);
+		
+		//attaque gauche milieu
+		attaqueLeftM = atlas.findRegion(couleur+"-atckM");
+		attaqueRightM = new TextureRegion(attaqueLeftM);
+		attaqueRightM.flip(true, false);
 	}
 
 	private void initPositionBasseFrames(TextureAtlas atlas,String couleur){
@@ -163,5 +190,10 @@ public class PersonnageAnimation {
 			walkRightFramesB[i].flip(true, false);
 		}
 		walkRightBAnimation = new Animation(RUNNING_FRAME_DURATION, walkRightFramesB);
+		
+		//attaque gauche haut
+		attaqueLeftB = atlas.findRegion(couleur+"-atckB");
+		attaqueRightB = new TextureRegion(attaqueLeftB);
+		attaqueRightB.flip(true, false);
 	}
 }

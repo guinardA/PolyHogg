@@ -132,7 +132,6 @@ public class GameContactListener implements ContactListener{
 
 		//Fonction qui permet le saut du personnage pour le personnage 1
 		public void jump(int joueur){
-
 			if(joueur == 1){
 				if(joueur1Terre){
 					player1.setState(State.JUMPING); // Passe a ete deplacement
