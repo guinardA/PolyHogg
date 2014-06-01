@@ -130,7 +130,7 @@ public class CustomPlayScreen extends PolyMenu{
 	
 	public boolean isPos(){
 		boolean ret = false;
-		if((Float.parseFloat(gravityField.getText()) < 0) && (Integer.parseInt(grenadesField.getText()) < 0) && (Integer.parseInt(durationField.getText()) < 0) && (Integer.parseInt(scoreField.getText()) < 0) && (Integer.parseInt(difficultyField.getText()) < 0)){
+		if((Float.parseFloat(gravityField.getText()) <= 0) && (Integer.parseInt(grenadesField.getText()) >= 0) && (Integer.parseInt(durationField.getText()) >= 0) && (Integer.parseInt(scoreField.getText()) >= 0) && (Integer.parseInt(difficultyField.getText()) >= 0)){
 			ret = true;
 		}
 		
