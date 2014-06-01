@@ -134,7 +134,7 @@ public class GameScreen extends PolyHogScreen{
 					if(levelManager.getNumMonde() == 1){
 						levelManager.setNumMonde(2);
 					}else{
-						((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur 1"));
+						((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur 2"));
 						levelManager.setNumMonde(1);
 					}
 					levelManager.setLevel(5);
@@ -238,11 +238,11 @@ public class GameScreen extends PolyHogScreen{
 			}
 			
 			
-			player1.update(camera,delta);
-			player2.update(camera,delta);
+			//player1.update(camera,delta);
+			//player2.update(camera,delta);
 			
 		    ///Affiche le mode debug
-			//debugRenderer.render(world, camera.combined);
+			debugRenderer.render(world, camera.combined);
 			
 			/* Step the simulation with a fixed time step of 1/60 of a second */
 			world.step(1 / 60f, 6, 2);
