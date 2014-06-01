@@ -54,10 +54,10 @@ public class ParametreScreen extends PolyMenu{
 		table.setBounds(0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		
 		heading = new Label("Options", skin);
-		//heading.setFontScale((float) 1.5);
 		
 		gravityText = new Label("Gravite", skin);
-		grenadesText = new Label("Grenades", skin); 
+		grenadesText = new Label("Grenades", skin);
+		grenadesText.setColor(Color.GRAY);
 		durationText = new Label("Duree", skin);
 		scoreText = new Label("ScoreMax", skin);
 		difficutlyText = new Label("Difficulte", skin);
@@ -66,11 +66,16 @@ public class ParametreScreen extends PolyMenu{
 		fieldStyle.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
 		fieldStyle.fontColor = new Color(1, 1, 1, 1);
 		
+		TextFieldStyle fieldStyle2 = new TextFieldStyle();
+		fieldStyle2.font = new BitmapFont(Gdx.files.internal("res/font/white.fnt"));
+		fieldStyle2.fontColor = Color.GRAY;
+		
 		gravityField = new TextField(Float.toString(Constants.GRAVITY), fieldStyle);
-		grenadesField = new TextField(Integer.toString(Constants.NB_GRENADES), fieldStyle);
 		durationField = new TextField(Integer.toString(Constants.GAME_DURATION), fieldStyle);
 		scoreField = new TextField(Integer.toString(Constants.MAX_SCORE), fieldStyle);
 		difficultyField = new TextField(Integer.toString(Constants.DIFFICULTY), fieldStyle);
+		grenadesField = new TextField(Integer.toString(Constants.NB_GRENADES), fieldStyle2);
+		grenadesField.setDisabled(true);
 		
 		buttonOk = new TextButton("Valider", skin);
 		buttonCancel = new TextButton("Annuler", skin);
@@ -99,8 +104,6 @@ public class ParametreScreen extends PolyMenu{
 		table.getCell(buttonOk).spaceBottom(10);
 		table.getCell(buttonCancel).spaceBottom(10);
 		
-		
-		//table.debug();
 		stage.addActor(table);
 		
 	}
@@ -125,5 +128,14 @@ public class ParametreScreen extends PolyMenu{
 		stage.dispose();
 		atlas.dispose();
 		skin.dispose();
+	}
+	
+	public boolean isEmpty(){
+		boolean ret = false;
+		if((gravityField.getText().equals("")) && (grenadesField.getText().equals(""))&& (durationField.getText().equals(""))&& (scoreField.getText().equals(""))&& (difficultyField.getText().equals(""))){
+			ret = true;
+		}
+		
+		return ret;
 	}
 }

@@ -2,6 +2,7 @@ package com.PolyHogg.controller;
 
 import com.PolyHogg.utils.Constants;
 import com.PolyHogg.view.CustomPlayScreen;
+import com.PolyHogg.view.GameOverScreen;
 import com.PolyHogg.view.GameScreen;
 import com.PolyHogg.view.MenuScreen;
 import com.PolyHogg.view.ParametreScreen;
@@ -10,7 +11,10 @@ import com.PolyHogg.view.PolyMenu;
 import com.PolyHogg.view.TournoiScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 
 public class MenuListener extends ClickListener {
@@ -22,7 +26,7 @@ public class MenuListener extends ClickListener {
 	}
 
 	public void clicked(InputEvent event, float x, float y) {
-		if (polymenu instanceof MenuScreen) {	//MENUSCREEN
+		if (polymenu instanceof MenuScreen) { // MENUSCREEN
 			if (event.getListenerActor() == ((MenuScreen) polymenu).buttonExit) {
 				Gdx.app.exit();
 			}
@@ -38,7 +42,7 @@ public class MenuListener extends ClickListener {
 			}
 		}
 
-		if (polymenu instanceof PlayScreen) {	//PLAYSCREEN
+		if (polymenu instanceof PlayScreen) { // PLAYSCREEN
 			if (event.getListenerActor() == ((PlayScreen) polymenu).buttonQuick) {
 				((Game) Gdx.app.getApplicationListener())
 						.setScreen(new GameScreen());
@@ -60,26 +64,38 @@ public class MenuListener extends ClickListener {
 			}
 		}
 
-		if (polymenu instanceof ParametreScreen) {	//PARAMETRESCREEN
-			if (event.getListenerActor() == ((ParametreScreen) polymenu).buttonOk) {
-				Constants.GRAVITY = Float
-						.parseFloat(((ParametreScreen) polymenu).gravityField
-								.getText());
-				Constants.NB_GRENADES = Integer
-						.parseInt(((ParametreScreen) polymenu).grenadesField
-								.getText());
-				Constants.MAX_SCORE = Integer
-						.parseInt(((ParametreScreen) polymenu).scoreField
-								.getText());
-				Constants.GAME_DURATION = Integer
-						.parseInt(((ParametreScreen) polymenu).durationField
-								.getText());
-				Constants.DIFFICULTY = Integer
-						.parseInt(((ParametreScreen) polymenu).difficultyField
-								.getText());
-				((Game) Gdx.app.getApplicationListener())
-						.setScreen(new MenuScreen());
+		if (polymenu instanceof ParametreScreen) { // PARAMETRESCREEN
+			if (!((ParametreScreen) polymenu).isEmpty()) {
+				if ((Float.parseFloat(((ParametreScreen) polymenu).gravityField.getText()) < 0)) {
+					Constants.GRAVITY = Float
+							.parseFloat(((ParametreScreen) polymenu).gravityField
+									.getText());
+					Constants.NB_GRENADES = Integer
+							.parseInt(((ParametreScreen) polymenu).grenadesField
+									.getText());
+					Constants.MAX_SCORE = Integer
+							.parseInt(((ParametreScreen) polymenu).scoreField
+									.getText());
+					Constants.GAME_DURATION = Integer
+							.parseInt(((ParametreScreen) polymenu).durationField
+									.getText());
+					Constants.DIFFICULTY = Integer
+							.parseInt(((ParametreScreen) polymenu).difficultyField
+									.getText());
+					((Game) Gdx.app.getApplicationListener())
+							.setScreen(new GameScreen());
+				}
 
+				else {
+					/*((CustomPlayScreen) polymenu).heading
+							.setText("Valeurs correctes exigees");*/
+					//((CustomPlayScreen) polymenu).heading = new Label("Gravite doit etre negative", new Skin(Gdx.files.internal("res/ui/menuStyle.json"),new TextureAtlas("res/ui/atlas.pack")), "small");
+					LabelStyle style = new LabelStyle();
+					style.font = new BitmapFont(Gdx.files.internal("res/font/whitesmall.fnt"));
+					style.fontColor = Color.RED;
+					((ParametreScreen) polymenu).heading.setStyle(style);
+					((ParametreScreen) polymenu).heading.setText("Valeurs correctes exigees");
+				}
 			}
 
 			if (event.getListenerActor() == ((ParametreScreen) polymenu).buttonCancel) {
@@ -88,40 +104,52 @@ public class MenuListener extends ClickListener {
 			}
 		}
 
-		if (polymenu instanceof CustomPlayScreen) {	//CUSTOMPLAYSCREEN
+		if (polymenu instanceof CustomPlayScreen) { // CUSTOMPLAYSCREEN
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonOk) {
-				if((Float.parseFloat(((CustomPlayScreen) polymenu).gravityField.getText()) < 0)){
-					Constants.GRAVITY = Float
+				if (!((CustomPlayScreen) polymenu).isEmpty()) {
+					if ((Float
 							.parseFloat(((CustomPlayScreen) polymenu).gravityField
-									.getText());
-					Constants.NB_GRENADES = Integer
-							.parseInt(((CustomPlayScreen) polymenu).grenadesField
-									.getText());
-					Constants.MAX_SCORE = Integer
-							.parseInt(((CustomPlayScreen) polymenu).scoreField
-									.getText());
-					Constants.GAME_DURATION = Integer
-							.parseInt(((CustomPlayScreen) polymenu).durationField
-									.getText());
-					Constants.DIFFICULTY = Integer
-							.parseInt(((CustomPlayScreen) polymenu).difficultyField
-									.getText());
-					((Game) Gdx.app.getApplicationListener())
-							.setScreen(new GameScreen());
+									.getText()) < 0)) {
+						Constants.GRAVITY = Float
+								.parseFloat(((CustomPlayScreen) polymenu).gravityField
+										.getText());
+						Constants.NB_GRENADES = Integer
+								.parseInt(((CustomPlayScreen) polymenu).grenadesField
+										.getText());
+						Constants.MAX_SCORE = Integer
+								.parseInt(((CustomPlayScreen) polymenu).scoreField
+										.getText());
+						Constants.GAME_DURATION = Integer
+								.parseInt(((CustomPlayScreen) polymenu).durationField
+										.getText());
+						Constants.DIFFICULTY = Integer
+								.parseInt(((CustomPlayScreen) polymenu).difficultyField
+										.getText());
+						((Game) Gdx.app.getApplicationListener())
+								.setScreen(new GameScreen());
+					}
+
+					else {
+						/*((CustomPlayScreen) polymenu).heading
+								.setText("Valeurs correctes exigees");*/
+						//((CustomPlayScreen) polymenu).heading = new Label("Gravite doit etre negative", new Skin(Gdx.files.internal("res/ui/menuStyle.json"),new TextureAtlas("res/ui/atlas.pack")), "small");
+						LabelStyle style = new LabelStyle();
+						style.font = new BitmapFont(Gdx.files.internal("res/font/whitesmall.fnt"));
+						style.fontColor = Color.RED;
+						((CustomPlayScreen) polymenu).heading.setStyle(style);
+						((CustomPlayScreen) polymenu).heading.setText("Valeurs correctes exigees");
+					}
 				}
-				else{
-					((CustomPlayScreen) polymenu).heading.setText("Probleme");
-				}
-		}
+			}
 
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonBack) {
 				((Game) Gdx.app.getApplicationListener())
 						.setScreen(new PlayScreen());
-				
+
 			}
 		}
-		
-		if (polymenu instanceof TournoiScreen) {	//TOURNOISCREEN
+
+		if (polymenu instanceof TournoiScreen) { // TOURNOISCREEN
 			if (event.getListenerActor() == ((TournoiScreen) polymenu).buttonOk) {
 
 			}
@@ -129,6 +157,13 @@ public class MenuListener extends ClickListener {
 			if (event.getListenerActor() == ((TournoiScreen) polymenu).buttonBack) {
 				((Game) Gdx.app.getApplicationListener())
 						.setScreen(new PlayScreen());
+			}
+		}
+		
+		if (polymenu instanceof GameOverScreen) { // GAMEOVERSCREEN
+			if (event.getListenerActor() == ((GameOverScreen) polymenu).buttonBack) {
+				((Game) Gdx.app.getApplicationListener())
+						.setScreen(new MenuScreen());
 			}
 		}
 	}

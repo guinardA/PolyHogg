@@ -10,7 +10,7 @@ public class Constants {
 	public static float SIZE_PERSO = 0.9f;
 	
 	public static float GRAVITY = -19.81f;
-	public static int NB_GRENADES = 26;
+	public static int NB_GRENADES = 0;
 	public static int MAX_SCORE = 10;
 	public static int GAME_DURATION = 0;
 	public static int DIFFICULTY = 0;

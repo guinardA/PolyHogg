@@ -5,6 +5,7 @@ import com.PolyHogg.controller.PersonnageListener;
 import com.PolyHogg.manager.LevelManager;
 import com.PolyHogg.model.Player;
 import com.PolyHogg.utils.Constants;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,9 +13,6 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Window.WindowStyle;
 
 
 /**
@@ -110,6 +108,7 @@ public class GameScreen extends PolyHogScreen{
 					this.loadWorld();}
 				else{
 					//Monde terminé
+					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur1"));
 				}
 			}
 			
@@ -124,6 +123,7 @@ public class GameScreen extends PolyHogScreen{
 				}
 				else{
 					//Monde terminé
+					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur2"));
 				}
 			}
 			//Cas ou les 2 joueurs tombe dans le vide
@@ -149,6 +149,7 @@ public class GameScreen extends PolyHogScreen{
 				}
 				else{
 					//Monde terminé
+					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur2"));
 				}
 			}
 			
@@ -166,6 +167,8 @@ public class GameScreen extends PolyHogScreen{
 				}
 				else{
 					//Monde terminé
+					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur1"));
+					
 				}
 			}
 			
