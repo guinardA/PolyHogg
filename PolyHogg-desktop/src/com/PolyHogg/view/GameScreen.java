@@ -99,7 +99,7 @@ public class GameScreen extends PolyHogScreen{
 			mondeSprite.render();
 
 			if(player1.getFinish()){
-				if(levelManager.getLevel() != 8){
+				if(levelManager.getLevel() != 9){
 					player1.setFinish(false);
 					levelManager.setLevel(levelManager.getLevel()+1);
 					world.setContactListener(null);
@@ -108,7 +108,15 @@ public class GameScreen extends PolyHogScreen{
 					this.loadWorld();}
 				else{
 					//Monde terminé
-					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur1"));
+					if(levelManager.getNumMonde() == 1){
+						levelManager.setNumMonde(2);
+					}else{
+						levelManager.setNumMonde(1);
+					}
+					levelManager.setLevel(5);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
 				}
 			}
 			
@@ -122,12 +130,38 @@ public class GameScreen extends PolyHogScreen{
 					this.loadWorld();
 				}
 				else{
-					//Monde terminé
-					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur2"));
+					if(levelManager.getNumMonde() == 1){
+						levelManager.setNumMonde(2);
+					}else{
+						levelManager.setNumMonde(1);
+					}
+					levelManager.setLevel(5);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
 				}
 			}
+			
+			
+			//Pour le dernier niveau
+			if(player1.getPlayer().getPosition().y < 0 && levelManager.getLevel() == 9){
+				world.setContactListener(null);
+				levelManager.setLevel(8);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+			}
+			
+			else if(player2.getPlayer().getPosition().y < 0 && levelManager.getLevel() == 1){
+				world.setContactListener(null);
+				levelManager.setLevel(2);
+				levelManager.clearWorld();
+				mondeSprite = levelManager.createWorld();
+				this.loadWorld();
+			}
+			
 			//Cas ou les 2 joueurs tombe dans le vide
-			if(player1.getPlayer().getPosition().y < 0 && player2.getPlayer().getPosition().y <0){
+			else if(player1.getPlayer().getPosition().y < 0 && player2.getPlayer().getPosition().y <0){
 				
 				world.setContactListener(null);
 				levelManager.clearWorld();
@@ -137,9 +171,8 @@ public class GameScreen extends PolyHogScreen{
 
 			
 			if(!player1.getLife()){
-				//Suppresion du personnage du decor mais erreur
-				//world.destroyBody(player1.getPlayer());
-				//player1.setLife(true);
+				
+				
 				if(levelManager.getLevel() != 1){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()-1);
@@ -147,18 +180,29 @@ public class GameScreen extends PolyHogScreen{
 					mondeSprite = levelManager.createWorld();
 					this.loadWorld();
 				}
+				else if(levelManager.getLevel() == 1){
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
+					this.loadWorld();
+				}
 				else{
 					//Monde terminé
-					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur2"));
+					if(levelManager.getNumMonde() == 1){
+						levelManager.setNumMonde(2);
+					}else{
+						levelManager.setNumMonde(1);
+					}
+					levelManager.setLevel(5);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
 				}
 			}
 			
 			else if(!player2.getLife()){
-				//Suppresion du personnage du decor mais erreur
-				//world.destroyBody(player1.getPlayer());
-				//player1.setLife(true);
 
-				if(levelManager.getLevel() != 8){
+				if(levelManager.getLevel() != 9){
 					world.setContactListener(null);
 					levelManager.setLevel(levelManager.getLevel()+1);
 					levelManager.clearWorld();
@@ -166,9 +210,15 @@ public class GameScreen extends PolyHogScreen{
 					this.loadWorld();
 				}
 				else{
-					//Monde terminé
-					((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur1"));
-					
+					if(levelManager.getNumMonde() == 1){
+						levelManager.setNumMonde(2);
+					}else{
+						levelManager.setNumMonde(1);
+					}
+					levelManager.setLevel(5);
+					world.setContactListener(null);
+					levelManager.clearWorld();
+					mondeSprite = levelManager.createWorld();
 				}
 			}
 			
