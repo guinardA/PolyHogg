@@ -65,36 +65,37 @@ public class MenuListener extends ClickListener {
 		}
 
 		if (polymenu instanceof ParametreScreen) { // PARAMETRESCREEN
-			if (!((ParametreScreen) polymenu).isEmpty()) {
-				if ((Float.parseFloat(((ParametreScreen) polymenu).gravityField.getText()) < 0)) {
-					Constants.GRAVITY = Float
-							.parseFloat(((ParametreScreen) polymenu).gravityField
-									.getText());
-					Constants.NB_GRENADES = Integer
-							.parseInt(((ParametreScreen) polymenu).grenadesField
-									.getText());
-					Constants.MAX_SCORE = Integer
-							.parseInt(((ParametreScreen) polymenu).scoreField
-									.getText());
-					Constants.GAME_DURATION = Integer
-							.parseInt(((ParametreScreen) polymenu).durationField
-									.getText());
-					Constants.DIFFICULTY = Integer
-							.parseInt(((ParametreScreen) polymenu).difficultyField
-									.getText());
-					((Game) Gdx.app.getApplicationListener())
-							.setScreen(new GameScreen());
-				}
+			if (event.getListenerActor() == ((ParametreScreen) polymenu).buttonOk) {
+				if (!((ParametreScreen) polymenu).isEmpty()) {
+					if (((ParametreScreen) polymenu).isPos()) {
+						Constants.GRAVITY = Float
+								.parseFloat(((ParametreScreen) polymenu).gravityField
+										.getText());
+						Constants.NB_GRENADES = Integer
+								.parseInt(((ParametreScreen) polymenu).grenadesField
+										.getText());
+						Constants.MAX_SCORE = Integer
+								.parseInt(((ParametreScreen) polymenu).scoreField
+										.getText());
+						Constants.GAME_DURATION = Integer
+								.parseInt(((ParametreScreen) polymenu).durationField
+										.getText());
+						Constants.DIFFICULTY = Integer
+								.parseInt(((ParametreScreen) polymenu).difficultyField
+										.getText());
+						((Game) Gdx.app.getApplicationListener())
+								.setScreen(new MenuScreen());
+					}
 
-				else {
-					/*((CustomPlayScreen) polymenu).heading
-							.setText("Valeurs correctes exigees");*/
-					//((CustomPlayScreen) polymenu).heading = new Label("Gravite doit etre negative", new Skin(Gdx.files.internal("res/ui/menuStyle.json"),new TextureAtlas("res/ui/atlas.pack")), "small");
-					LabelStyle style = new LabelStyle();
-					style.font = new BitmapFont(Gdx.files.internal("res/font/whitesmall.fnt"));
-					style.fontColor = Color.RED;
-					((ParametreScreen) polymenu).heading.setStyle(style);
-					((ParametreScreen) polymenu).heading.setText("Valeurs correctes exigees");
+					else {
+						LabelStyle style = new LabelStyle();
+						style.font = new BitmapFont(
+								Gdx.files.internal("res/font/whitesmall.fnt"));
+						style.fontColor = Color.RED;
+						((ParametreScreen) polymenu).heading.setStyle(style);
+						((ParametreScreen) polymenu).heading
+								.setText("Valeurs correctes exigées");
+					}
 				}
 			}
 
@@ -107,9 +108,7 @@ public class MenuListener extends ClickListener {
 		if (polymenu instanceof CustomPlayScreen) { // CUSTOMPLAYSCREEN
 			if (event.getListenerActor() == ((CustomPlayScreen) polymenu).buttonOk) {
 				if (!((CustomPlayScreen) polymenu).isEmpty()) {
-					if ((Float
-							.parseFloat(((CustomPlayScreen) polymenu).gravityField
-									.getText()) < 0)) {
+					if (((CustomPlayScreen) polymenu).isPos()) {
 						Constants.GRAVITY = Float
 								.parseFloat(((CustomPlayScreen) polymenu).gravityField
 										.getText());
@@ -130,14 +129,13 @@ public class MenuListener extends ClickListener {
 					}
 
 					else {
-						/*((CustomPlayScreen) polymenu).heading
-								.setText("Valeurs correctes exigees");*/
-						//((CustomPlayScreen) polymenu).heading = new Label("Gravite doit etre negative", new Skin(Gdx.files.internal("res/ui/menuStyle.json"),new TextureAtlas("res/ui/atlas.pack")), "small");
 						LabelStyle style = new LabelStyle();
-						style.font = new BitmapFont(Gdx.files.internal("res/font/whitesmall.fnt"));
+						style.font = new BitmapFont(
+								Gdx.files.internal("res/font/whitesmall.fnt"));
 						style.fontColor = Color.RED;
 						((CustomPlayScreen) polymenu).heading.setStyle(style);
-						((CustomPlayScreen) polymenu).heading.setText("Valeurs correctes exigees");
+						((CustomPlayScreen) polymenu).heading
+								.setText("Valeurs correctes exigées");
 					}
 				}
 			}
@@ -159,7 +157,7 @@ public class MenuListener extends ClickListener {
 						.setScreen(new PlayScreen());
 			}
 		}
-		
+
 		if (polymenu instanceof GameOverScreen) { // GAMEOVERSCREEN
 			if (event.getListenerActor() == ((GameOverScreen) polymenu).buttonBack) {
 				((Game) Gdx.app.getApplicationListener())

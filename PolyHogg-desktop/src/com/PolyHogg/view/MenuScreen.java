@@ -66,7 +66,7 @@ public class MenuScreen extends PolyMenu{
 		table.add(heading);
 		table.getCell(heading).spaceBottom(50);
 		table.row();
-		table.add(buttonPlay).width(299); //solution temporaire pour le probleme de taille du bouton Play
+		table.add(buttonPlay).width(299);
 		table.row();
 		table.add(buttonOption);
 		table.row();

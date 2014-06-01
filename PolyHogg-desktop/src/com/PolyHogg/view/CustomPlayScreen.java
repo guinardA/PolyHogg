@@ -100,7 +100,6 @@ public class CustomPlayScreen extends PolyMenu{
 		table.add(buttonOk);
 		table.add(buttonBack);
 		
-		//table.debug();
 		stage.addActor(table);
 		
 	}
@@ -123,6 +122,15 @@ public class CustomPlayScreen extends PolyMenu{
 	public boolean isEmpty(){
 		boolean ret = false;
 		if((gravityField.getText().equals("")) && (grenadesField.getText().equals(""))&& (durationField.getText().equals(""))&& (scoreField.getText().equals(""))&& (difficultyField.getText().equals(""))){
+			ret = true;
+		}
+		
+		return ret;
+	}
+	
+	public boolean isPos(){
+		boolean ret = false;
+		if((Float.parseFloat(gravityField.getText()) < 0) && (Integer.parseInt(grenadesField.getText()) < 0) && (Integer.parseInt(durationField.getText()) < 0) && (Integer.parseInt(scoreField.getText()) < 0) && (Integer.parseInt(difficultyField.getText()) < 0)){
 			ret = true;
 		}
 		

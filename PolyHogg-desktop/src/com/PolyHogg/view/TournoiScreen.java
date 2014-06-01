@@ -72,8 +72,7 @@ public class TournoiScreen extends PolyMenu{
 		table.add(buttonBack);
 		table.getCell(buttonOk).spaceTop(20);
 		table.getCell(buttonBack).spaceTop(20);
-		
-		//table.debug();
+	
 		stage.addActor(table);
 		
 	}

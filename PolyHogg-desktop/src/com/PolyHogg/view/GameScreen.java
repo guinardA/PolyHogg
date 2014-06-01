@@ -111,6 +111,7 @@ public class GameScreen extends PolyHogScreen{
 					if(levelManager.getNumMonde() == 1){
 						levelManager.setNumMonde(2);
 					}else{
+						((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur 1"));
 						levelManager.setNumMonde(1);
 					}
 					levelManager.setLevel(5);
@@ -133,6 +134,7 @@ public class GameScreen extends PolyHogScreen{
 					if(levelManager.getNumMonde() == 1){
 						levelManager.setNumMonde(2);
 					}else{
+						((Game) Gdx.app.getApplicationListener()).setScreen(new GameOverScreen("Joueur 1"));
 						levelManager.setNumMonde(1);
 					}
 					levelManager.setLevel(5);

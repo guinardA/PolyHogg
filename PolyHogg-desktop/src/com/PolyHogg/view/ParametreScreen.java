@@ -138,4 +138,13 @@ public class ParametreScreen extends PolyMenu{
 		
 		return ret;
 	}
+	
+	public boolean isPos(){
+		boolean ret = false;
+		if((Float.parseFloat(gravityField.getText()) < 0) && (Integer.parseInt(grenadesField.getText()) < 0) && (Integer.parseInt(durationField.getText()) < 0) && (Integer.parseInt(scoreField.getText()) < 0) && (Integer.parseInt(difficultyField.getText()) < 0)){
+			ret = true;
+		}
+		
+		return ret;
+	}
 }
