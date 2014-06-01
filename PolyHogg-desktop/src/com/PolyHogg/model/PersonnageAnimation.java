@@ -99,7 +99,7 @@ public class PersonnageAnimation {
 		}
 		else if (player.getState().equals(State.JUMPING)) {
 			if( player.getPlayer().getLinearVelocity().y == 0)
-				player.setState(State.WALKING);
+				player.setState(State.IDLE);
 			if (player.getPlayer().getLinearVelocity().y > 0) {
 				frame = player.isFacingLeft() ? jumpLeft : jumpRight;
 			} else {
