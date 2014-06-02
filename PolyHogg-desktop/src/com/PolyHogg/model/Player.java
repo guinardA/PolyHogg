@@ -34,6 +34,7 @@ public class Player {
 	private Vector2     acceleration = new Vector2(); //acceleration en XY lorsque le personnage saute
 	private Vector2     velocity = new Vector2(); //vitesse de deplacement du personnage
 	private Rectangle   bounds = new Rectangle(); //limite du personnage
+	private SpriteBatch batch;
 	
 	private int garde = 1;
 	private Body player;
@@ -49,6 +50,8 @@ public class Player {
 	private PersonnageAnimation animation;
 
 	public Player(Vector2 position,boolean rouge) {
+
+		batch = new SpriteBatch();
 		this.position = position;
 		this.bounds.height = Constants.SIZE_PERSO;
 		this.bounds.width = Constants.SIZE_PERSO;
@@ -57,7 +60,7 @@ public class Player {
 		this.facingLeft = rouge;
 		this.personnageRouge = rouge;
 		this.animation = new PersonnageAnimation(this);
-	}
+		}
 	
 	public Body createCorps(World world, int joueur) {
 		player = BodyFactory.createPlayer(this, world, joueur);
@@ -65,16 +68,15 @@ public class Player {
 	}
 	
 	
-	public void update(OrthographicCamera camera,float delta){
-		if(sprite){
-			SpriteBatch batch;
-			batch = new SpriteBatch();
-			batch.setProjectionMatrix(camera.combined);
-			batch.begin();
-			batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
-			batch.end();
-		}
-	}
+	 public void update(OrthographicCamera camera,float delta){
+		 if(sprite){
+
+		 batch.setProjectionMatrix(camera.combined);
+		 batch.begin();
+		 batch.draw(animation.getCurrentFrame(delta),player.getPosition().x, player.getPosition().y, Constants.SIZE_PERSO , Constants.SIZE_PERSO );
+		 batch.end();
+		 }
+		 }
 	
 	public boolean getSlow(){
 		return slow;
